@@ -12,18 +12,22 @@
 
     {{-- Jquery --}}
     <script  type="text/javascript" src="{{ URL::asset('plugins/jquery/jquery.min.js') }}"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- External Style --}}
     @include('layouts/external-style')
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- icon --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     {{-- Page Style --}}
     @yield('page-styles')
+
 </head>
 <body>
-    <div class="container-fluid page-content-wrapper">
+     {{-- Footer --}}
+    @include('layouts/header')
+    <div class="container-fluid page-content-wrapper" style="margin-top: 4rem !important">
         @yield('page-content')
     </div>
     {{-- Footer --}}

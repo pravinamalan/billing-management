@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.main');
 });
+
+Route::get('/order/fields', [OrderController::class, 'index']);
+Route::get('/employee/fields', [OrderController::class, 'getEmployeeFields']);
+Route::get('/employee/list', [OrderController::class, 'getEmployee']);

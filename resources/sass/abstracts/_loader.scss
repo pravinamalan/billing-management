@@ -1,0 +1,111 @@
+.private-spinner {
+    margin: 8px;
+    &--top {
+        position: absolute;
+        top:0px;
+    }
+    &--mid {
+        position: absolute;
+        top:30px;
+    }
+    &.private-spinner--huge {
+        height: 45px;
+        width: 45px;
+    }
+    &.private-spinner--small {
+        height: 30px;
+        width: 30px;
+    }
+    .private-spinner-wrapper {
+        height: 100%;
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity .2s ease-in-out,transform .2s cubic-bezier(.89,.03,.68,.22);
+        width: 100%;
+        .private-spinner__ring {
+            animation: private-spin 2s infinite linear;
+            height: 100%;
+            width: 100%;
+            .private-spinner__ring-background {
+                stroke: #7fd1de;
+            }
+            .private-spinner__ring-path {
+                animation: private-dash 2s ease-in-out infinite;
+                stroke-linecap: round;
+                stroke: #00a4bd;
+                @keyframes private-dash {
+                    0% {
+                        stroke-dasharray: 1,150;
+                        stroke-dashoffset: 0;
+                    }
+                    50% {
+                        stroke-dasharray: 90,150;
+                        stroke-dashoffset: -50;
+                    }
+                    100% {
+                        stroke-dasharray: 90,150;
+                        stroke-dashoffset: -140;
+                    }
+                }
+            }
+            @keyframes private-spin {
+                100% {
+                    transform: rotate(1turn);
+                }
+            }
+        }
+
+    }
+}
+
+.parent-height-min-50{
+    min-height: 50px;
+}
+.parent-height-min-100{
+    min-height: 100px;
+}
+
+.private-spinner-main-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    &.private-spinner--active{
+        display: flex;
+    }
+    &.private-spinner--hide{
+        display: none;
+    }
+    &.unset-height{
+        height: 0%;
+        top: 10%;
+    }
+    &.unset-position {
+        position: unset !important;
+    }
+}
+.loader-min-250{
+    min-height: 250px;
+}
+.loader-min-150 {
+    min-height: 150px;
+}
+.loader-min-500{
+    height: 500px;
+    overflow: hidden;
+}
+.view-port-height {
+    height: calc(100vh - 250px);
+    overflow: hidden;
+}
+
+.transparent-loader {
+    .private-spinner-main-wrapper {
+        background: transparent;
+    }
+}
