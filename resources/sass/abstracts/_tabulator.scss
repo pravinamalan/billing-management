@@ -20,6 +20,9 @@
         border-radius: 0px !important;
         padding: 5px 30px 5px 30px !important;
         &:focus {
+            outline: none !important;
+            border: none !important;
+            border-color: transparent !important;
             background-color: #ffffff !important;
         }
     }
@@ -29,7 +32,7 @@
         left: 50%;
         width: 0;
         height: 2px;
-        background-color: #0069ff;
+        // background-color: #0069ff;
         transition: 0.4s;
     }
     .search-clear{
@@ -79,6 +82,7 @@
         border: 0 !important;
         padding: 8px 15px !important;
         border-bottom: 1px solid #dddfea !important;
+        text-wrap: auto !important;
         // height: unset !important;
     }
     .tabulator-col {
@@ -203,7 +207,7 @@
     .select2-container{
         width: unset !important;
         margin: 0px 5px !important;
-        min-width: 60px !important;
+        min-width: 70px !important;
     }
     .select2-selection__arrow {
         b{

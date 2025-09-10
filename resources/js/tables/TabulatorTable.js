@@ -1,9 +1,11 @@
 // tabulator-table.js
-import { toggleLoaderHideShow } from "../helper/common-helper";
+import { getPromise } from "../api/apiService";
+import { apiEndPoints } from "../api/endPoints";
+import { toggleLoaderHideShow, toggleLoaderV1 } from "../helper/common-helper";
 import { ColumnRenderer } from "./columns/columnRender";
 
 
-
+import axios from "axios";
 export class TabulatorTable {
     constructor({ element, module, tableName, url, config = {} }) {
         this.element = element;
@@ -151,6 +153,11 @@ export class TabulatorTable {
 
         $('body').on('click', `.refresh-table[data-section="${this.module}"]`,
             this.handleRefresh.bind(this));
+
+        $('body').on('click', `.download-action[data-section="${this.module}"]`, (event) => {
+            const id = $(event.currentTarget).data('id');
+            this.handleDownload(id);
+        });
     }
 
     /**
@@ -159,12 +166,12 @@ export class TabulatorTable {
     handleDataLoaded(data) {
         if (data && data.length) {
             $(`#${this.module}_EMPTY_WRAPPER`).addClass('d-none');
-            $(`#${this.module}_TABLE, #${this.module}_SEARCH, .refresh-table[data-section="${this.module}"], #${this.module}_COUNT`).removeClass('d-none');
+            $(`#${this.module}_TABLE, #${this.module}_SEARCH, .refresh-table[data-section="${this.module}"], .add-btn[data-section="${this.module}"]`).removeClass('d-none');
         } else {
             $(`#${this.module}_TABLE`).addClass('d-none');
-            $(`#${this.module}_EMPTY_WRAPPER, .refresh-table[data-section="${this.module}"]`).removeClass('d-none');
+            $(`#${this.module}_EMPTY_WRAPPER, .refresh-table[data-section="${this.module}"],.add-btn[data-section="${this.module}"]`).removeClass('d-none');
         }
-         $(`.tabulator-page-size`).select2();
+        $(`.tabulator-page-size`).select2();
         $(`.data-table-wrapper`)?.remove();
         toggleLoaderHideShow(this.module,'hide');
     }
@@ -181,6 +188,42 @@ export class TabulatorTable {
      */
     handleRefresh() {
         this.refresh();
+    }
+    /**
+     * Handle Dwoload
+    */
+    async handleDownload(id) {
+        const baseUrl = "http://127.0.0.1:8000"; 
+        const url = `${baseUrl}/quotations/${id}/pdf`;
+        toggleLoaderHideShow("QUOTATION_LOADER",'show');
+        try {
+            const response = await axios.get(url, {
+                responseType: 'blob'
+            });
+
+          
+            const blob = new Blob([response.data], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+
+           
+            const disposition = response.headers['content-disposition'];
+            let fileName = `quotation_${id}.pdf`;
+            if (disposition && disposition.indexOf('filename=') !== -1) {
+                fileName = disposition.split('filename=')[1].replace(/['"]/g, '');
+            }
+
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            window.URL.revokeObjectURL(link.href);
+            toggleLoaderHideShow("QUOTATION_LOADER",'hide');
+        } catch (error) {
+            toggleLoaderHideShow("QUOTATION_LOADER",'hide');
+            console.error("Download failed:", error);
+        }
     }
 
     /**
@@ -201,9 +244,23 @@ export class TabulatorTable {
     /**
      * Refresh table data
      */
-    refresh(params = {}) {
+    refresh(params = {},mode= "show",  height = "loader-min-500") {
+        if (!this.module) {
+            console.error('Module not defined');
+            return this;
+        }
+        const sectionSelector = `.section-wrapper[data-section="${this.module}"]`;
+        toggleLoaderV1( sectionSelector, mode, height);
+        
         if (this.tableInstance) {
-            this.tableInstance.setData(this.url, params);
+            this.tableInstance.setData(this.url, params)
+            .then(() => {
+                toggleLoaderV1(sectionSelector, 'hide', height);
+            })
+            .catch((error) => {
+                toggleLoaderV1(sectionSelector, 'hide', height);
+                toastr.error(error.message || 'Failed to refresh table data');
+            });
         }
         return this;
     }

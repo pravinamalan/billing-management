@@ -221,7 +221,7 @@ body.side-panel-overlay{
                 grid-gap: 0rem 1rem !important;
                 border-top: 1px solid #ddd !important;
                 @include media-max-sm {
-                    grid-template-columns: auto;
+                    grid-template-columns: auto !important;
                 }
                 &::before, &::after {
                     display: none !important;

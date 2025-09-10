@@ -50,6 +50,14 @@
         <h4>Billing & Mangement</h4>
     </div>
     <div class="profile d-flex align-items-center gap-2 ">
+        <div class="tabluator-input-search-wrapper d-none d-lg-flex" id="ORDER_SEARCH">
+            <span class="search-icon">
+                <img src="https://inflowcare.s3.amazonaws.com/static/icons/search.svg" width="18" height="18">
+            </span>
+            <input type="text" class="form-control search" id="search" placeholder="Search" autocomplete="off" style="background: #f1f3f4 !important;">
+            <span class="focus-border"></span>
+            <img class="search-clear visibility-hide" src="https://inflowcare.s3.amazonaws.com/static/icons/clear.svg" width="12" height="12" style="opacity: .5;">
+        </div>
         <div class="dropdown">
             <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

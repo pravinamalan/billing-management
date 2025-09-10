@@ -18,6 +18,8 @@ export const createSectionField = (mode = 'VIEW', fields = [], fieldOption = {},
                 sectionFields += `${createSelectField(mode, item, fieldOption, fieldValues, fieldView)}`;
             }  else if(item.field_type.toUpperCase() == "TEXTAREA") {
                 sectionFields += `${createTextareaField(mode, item, fieldValues)}`;
+            }else if(item.field_type.toUpperCase() == "ACTIONS") {
+                sectionFields += `${createActionFields(mode,item,fieldValues)}`
             }
         });
     }
@@ -72,7 +74,7 @@ export const createSelectField = (mode = 'view', field = {}, fieldOption = {}, f
 
         let fieldName = checkEmpty(fieldProperties, "field_name");
         let readOnly = mode == "VIEW" ? "select2-readonly":'';
-        console.log(readOnly);
+        // console.log(readOnly);
 
         // Placeholder Check
         let palceHolder = '';
@@ -149,6 +151,23 @@ export const createTextareaField = (mode = 'view', field = {}, fieldValues = {},
 
     }
     return textAreaField;
+}
+/**
+ * Render | Action Field
+ * @param {String} mode
+ * @param {Object} field
+ * @param {Object} fieldValues
+ * @returns
+ */
+export const createActionFields = (mode = 'view', field = {}, fieldValues = {}, fieldView = "",) =>{
+    let actionField = '';
+    if (Object.keys(field).length > 0) {
+        let fieldProperties = JSON.parse(field.field_properties);
+
+        actionField = `<button id="${setElementId(field, 'field_key')}" name="${setFieldName(fieldProperties)}">${fieldProperties.button_text}</button>`
+    }
+
+    return actionField;
 }
 /**
  * Get Common Field Properties

@@ -1,13 +1,18 @@
-import { deleteIcon, editIcon, viewIcon } from "../../common/icon";
+import { deleteIcon, downloadIcon, editIcon, viewIcon } from "../../common/icon";
 import { checkEmpty } from "../../helper/common-helper";
 import { employeeColumns } from "./employeeColumns";
-
+import { orderColumns } from "./orderColumns";
+import { quotationColumns } from "./quotationColumns";
+let moduleName;
 export class ColumnRenderer {
+
     static getColumns(module) {
         const renderers = {
             "EMPLOYEE": employeeColumns,
+            "ORDER" : orderColumns,
+            "QUOTATION" : quotationColumns
         };
-
+        moduleName = module;
         return renderers[module] || [];
     }
 
@@ -55,30 +60,39 @@ export class ColumnRenderer {
 
         let actionHTML = '';
 
-        if (actions.includes('edit')) {
+        if (actions.includes('view')) {
             actionHTML += `
                 <span class="icon-box view-action"
                     data-id="${id}
-                    title="View">
+                    title="View" data-section=${moduleName}>
                     ${viewIcon({ width: 20, height: 20 })}
+                </span>`;
+        }
+
+        if (actions.includes('edit')) {
+            actionHTML += `
+                <span class="icon-box edit-action"
+                    data-id="${id}
+                    title="Edit" data-section=${moduleName}>
+                    ${editIcon({ width: 18, height: 18 })}
                 </span>`;
         }
 
         if (actions.includes('delete')) {
             actionHTML += `
-                <span class="icon-box edit-action"
+                <span class="icon-box delete-action"
                     data-id="${id}
-                    title="Edit">
-                    ${editIcon({ width: 18, height: 18 })}
+                    title="Delete" data-section=${moduleName}>
+                    ${deleteIcon({ width: 18, height: 18 })}
                 </span>`;
         }
 
-        if (actions.includes('view')) {
+        if (actions.includes('download')) {
             actionHTML += `
-                <span class="icon-box delete-action"
+                <span class="icon-box download-action"
                     data-id="${id}
-                    title="Delete">
-                    ${deleteIcon({ width: 18, height: 18 })}
+                    title="Download" data-section=${moduleName}>
+                    ${downloadIcon({ width: 18, height: 18 })}
                 </span>`;
         }
 

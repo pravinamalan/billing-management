@@ -1,5 +1,5 @@
 <section class="data-table-wrapper mb-4">
-    <div class="table-action-skeleton d-flex flex-column flex-md-row">
+    <div class="table-action-skeleton d-flex flex-column flex-lg-row">
         <div class="search-input"></div>
         <div class="action-button-group">
             {{-- <div class="action-button"></div> --}}

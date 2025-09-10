@@ -33,7 +33,7 @@
     {{-- Footer --}}
     @include('layouts/footer')
     {{-- Page Script --}}
-    @yield('page-scripts')
+    @stack('scripts')
     {{-- External Scripts --}}
     @include('layouts/external-script')
 </body>

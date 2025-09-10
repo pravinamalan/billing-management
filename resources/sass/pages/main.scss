@@ -59,7 +59,16 @@
 
     }
 }
-#order {
+.empty-wrapper{
+    padding: 30px !important;
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 10px 20px !important;
+    height: 50% !important;
+
+}
+#ORDER_WRAPPER {
 
     .add-workflow-wrapper {
         display: flex;
@@ -100,7 +109,7 @@
 
 
 }
-#order{
+#ORDER_WRAPPER{
 
     .form-control {
         border: 1px solid #ced4da;
@@ -184,7 +193,7 @@
                 box-shadow: none !important;
                 border-radius: 0px !important;
                 background-color: #f8fcff !important;
-                border: 1px solid #0069ff;
+                // border: 1px solid #0069ff;
             }
         }
         .esign_table_search_clear,.service_table_search_clear {
@@ -265,3 +274,5 @@
     }
 
 }
+
+

@@ -1,10 +1,12 @@
+import { postPromise } from "./api/apiService";
 import { apiEndPoints } from "./api/endPoints";
 import "./bootstrap";
 
-import { deleteIcon, editIcon, viewIcon } from "./common/icon";
-import { checkEmpty, initilizeTippy, tippyInstanceDestroy } from "./helper/common-helper";
-import { ListSidePannel } from "./helper/list/side-pannel";
+import { addIcon, deleteIcon, editIcon, removeIcon, saveIcon, viewIcon } from "./common/icon";
+import { checkEmpty, initilizeTippy, renderFormField, tippyInstanceDestroy, toggleLoaderHideShow } from "./helper/common-helper";
+import { ListSidePanel } from "./helper/list/side-pannel";
 import { customSelect2, customSelectV2 } from "./helper/select2";
+import { SidePanel } from "./panels/sidePanelConfig";
 import { TabulatorTable } from "./tables/TabulatorTable";
 
 class OrdersTable {
@@ -275,7 +277,7 @@ class OrdersTable {
             url : `${apiEndPoints("ORDER", "FIELDS")}`,
             rowId: orderId,
         }
-        new ListSidePannel(config)?.initialize();
+        new ListSidePanel(config)?.initialize();
         console.log(`View order: ${orderId}`);
     }
 
@@ -287,7 +289,7 @@ class OrdersTable {
             url : `${apiEndPoints("ORDER", "FIELDS")}`,
             rowId: orderId,
         }
-        new ListSidePannel(config)?.initialize();
+        new ListSidePanel(config)?.initialize();
         console.log(`View order: ${orderId}`);
     }
 
@@ -316,31 +318,15 @@ class OrdersTable {
 
 
 
-
+let sidePanelInstance;
 $(() => {
-    $('body').on('click', '#add-new-order', function() {
-        let config = {
-            mode : "ADD",
-            module  : `ORDER`,
-            element : `#slideOutPanel #renderWrapper`,
-            url : `${apiEndPoints("ORDER", "FIELDS")}`,
-            rowId: null,
-        }
-        new ListSidePannel(config)?.initialize();
-    });
-    $('body').on('click', '#add-new-employee', function() {
-        let config = {
-            mode : "ADD",
-            module  : `EMPLOYEE`,
-            element : `#slideOutPanel #renderWrapper`,
-            url : `${apiEndPoints("EMPLOYEE", "FIELDS")}`,
-            rowId: null,
-        }
-        new ListSidePannel(config)?.initialize();
-    });
-    customSelectV2();
-    new OrdersTable();
 
+
+    customSelectV2();
+
+    /**
+     * Employee
+     */
     let config = {
         element: 'EMPLOYEE_WRAPPER',
         module  : `EMPLOYEE`,
@@ -355,4 +341,316 @@ $(() => {
     $('[data-bs-toggle="tab"][href="#employee"]').on('shown.bs.tab',  function(){
         new TabulatorTable(config).initialize()
     });
+    $('body').on('click', '#add-new-employee', function() {
+        const config = {
+            mode: "ADD",
+            module: "EMPLOYEE",
+            element: "#renderWrapper",
+            url: apiEndPoints("EMPLOYEE", "FIELDS"),
+            rowId: null,
+        };
+
+        const employeePanel = new ListSidePanel(config);
+
+        employeePanel.initialize();
+    });
+    /**
+     * Order
+     */
+    let orderTableConfig = {
+        element: 'ORDER_WRAPPER',
+        module  : `ORDER`,
+        tableName : `#ORDER_TABLE`,
+        url : `${apiEndPoints("ORDER","LIST")}`,
+        params : ``,
+        config: {
+            pagination: true,
+            pageSize: 10
+        }
+    }
+    $('[data-bs-toggle="tab"][href="#orders"]').on('shown.bs.tab',  function(){
+        new TabulatorTable(orderTableConfig).initialize()
+    });
+
+    $('body').on('click', '#add-new-order', function() {
+        const config = {
+            mode: "ADD",
+            module: "ORDER",
+            element: "#renderWrapper",
+            url: apiEndPoints("ORDER", "FIELDS"),
+            rowId: null,
+        };
+
+        const orderPanel = new ListSidePanel(config);
+
+
+        orderPanel.initialize();
+    });
+
+    /**
+     * Quotation
+     */
+
+    let quotationTableConfig = {
+        element: 'QUOTATION_WRAPPER',
+        module  : `QUOTATION`,
+        tableName : `#QUOTATION_TABLE`,
+        url : `${apiEndPoints("QUOTATION","LIST")}`,
+        params : ``,
+        config: {
+            pagination: true,
+            pageSize: 10
+        }
+    }
+
+    $('[data-bs-toggle="tab"][href="#quotations"]').on('shown.bs.tab',  function(){
+        new TabulatorTable(quotationTableConfig).initialize()
+    });
+    sidePanelInstance = new SidePanel();
+    $('body').on('click', '#add-new-quotation', function() {
+        sidePanelInstance.initializeSidePanel({
+            header: {
+                title: `Add Quotation`,
+                subTitle: ``,
+            },
+            footer: {
+                buttons: [{
+                    class: 'btn btn-voilet action-btn save-btn d-flex align-items-center save-quotation',
+                    icon: saveIcon(),
+                    text: 'Save'
+                }]
+            },
+            panelId: 'quotationPannel',
+        });
+        toggleLoaderHideShow(`quotationPannel`, 'show');
+        $('#quotationPannel .body-content').html(renderFormField());
+        toggleLoaderHideShow(`quotationPannel`, 'hide');
+
+    });
+
+    function updateRowIndices() {
+        $('#services-table tbody tr').each(function(index) {
+            $(this).attr('data-row-count', index);
+
+            $(this).find('[name*="items"]').each(function() {
+                let name = $(this).attr('name');
+                name = name.replace(/items\[\d+\]/, `items[${index}]`);
+                $(this).attr('name', name);
+            });
+
+            if ($('#services-table tbody tr').length === 1) {
+                $(this).find('.remove-row').hide();
+            } else {
+                $(this).find('.remove-row').show();
+            }
+        });
+
+        updateGrandTotal();
+    }
+
+    $(document).on('click', '.add-row', function() {
+        let newRow = $('#services-table tbody tr:first').clone();
+
+        newRow.find('textarea').val('');
+        newRow.find('.qty').val('1');
+        newRow.find('.price').val('');
+        newRow.find('.line-total').val('');
+
+        $('#services-table tbody').append(newRow);
+
+        updateRowIndices();
+    });
+
+
+    $(document).on('click', '.remove-row', function() {
+        if ($('#services-table tbody tr').length > 1) {
+            $(this).closest('tr').remove();
+            updateRowIndices();
+        }
+    });
+
+    $(document).on('input', '.qty, .price', function() {
+        let row = $(this).closest('tr');
+        calculateLineTotal(row);
+        updateGrandTotal();
+    });
+
+    function calculateLineTotal(row) {
+        let qty = parseFloat(row.find('.qty').val()) || 0;
+        let price = parseFloat(row.find('.price').val()) || 0;
+        let total = qty * price;
+
+        row.find('.line-total').val(total.toFixed(2));
+    }
+
+    function updateGrandTotal() {
+        let grandTotal = 0;
+
+        $('.line-total').each(function() {
+            grandTotal += parseFloat($(this).val()) || 0;
+        });
+
+        $('#grand-total').text('$' + grandTotal.toFixed(2));
+    }
+
+    $('body').on('click','.save-quotation',async function(){
+
+
+        let customerName = $('input[name="customer_name"]').val() || "";
+        let customerPhone = $('input[name="customer_phone"]').val() || "";
+        let customerEmail = $('input[name="customer_email"]').val() || "";
+        let customerAddress = $('textarea[name="customer_address"]').val() || "";
+        
+        let quotationData = [];
+        
+        $('#services-table tbody tr').each(function() {
+            let service = $(this).find('textarea[name*="service_name"]').val();
+            let qty = $(this).find('.qty').val();
+            let price = $(this).find('.price').val();
+            let total = $(this).find('.line-total').val();
+            
+            quotationData.push({
+                service_name: service,
+                quantity: qty,
+                unit_price: price,
+                total: total
+            });
+        });
+        
+
+        let param = {
+            customer_name: customerName,
+            customer_phone: customerPhone,
+            customer_email: customerEmail,
+            customer_address: customerAddress,
+            quotation_data: quotationData,
+        };
+
+        toggleLoaderHideShow(`quotationPannel`, 'show');
+        try {
+            const {status} = await postPromise(`${apiEndPoints("QUOTATION","SAVE")}`,param)
+            if(!!status && status == "Success"){
+                $('.sidepannel-wrapper').reset();
+                toggleLoaderHideShow(`quotationPannel`, 'hide');
+            }
+        } catch (error) {
+             toggleLoaderHideShow(`quotationPannel`, 'hide');
+            console.log("Error saving quotation",error);
+            
+        }
+    });
+
+
+    updateRowIndices();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // calendar
+    var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            height:"auto",
+            dayMaxEvents: 10,
+            headerToolbar: {
+                right: 'dayGridMonth,dayGridWeek,timeGridDay',
+                center: 'title',
+                left: "prev,next,today",
+            },
+            buttonText: {
+                today:    'today',
+                dayGridMonth: 'Month',
+                dayGridWeek: 'Week',
+                timeGridDay: 'Day',
+            },
+            initialView: 'dayGridMonth',
+            events: function (fetchInfo,successCallback,failureCallback) {
+
+            var startDate = moment(fetchInfo.start).format("YYYY-MM-DD")
+            var endDate   = moment(fetchInfo.end).format("YYYY-MM-DD")
+
+            calendarLoader('#calendar-wrapper', 'show', 'loader-min-500');
+
+            $.ajax({
+                url: `${apiEndPoints("HOME","LIST")}`,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    start           : startDate,
+                    end             : endDate,
+                    // _token          : document.querySelector('meta[name="csrf-token"]').content,
+                },
+                success: function (doc) {
+                    var calendarEvent  = [];
+
+                    successCallback(calendarEvent);
+                    calendarLoader('#calendar-wrapper', 'hide', 'loader-min-500');
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    calendarLoader('#calendar-wrapper', 'hide', 'loader-min-500');
+                }
+            });
+        },
+        });
+    calendar.render();
+    function calendarLoader(id, mode = 'show', height = ''){
+        if( mode == 'show'){
+            if(height != '')
+                $(id).addClass(height);
+            $(id+' .private-spinner-main-wrapper').removeClass('private-spinner--hide');
+            $(id+' .private-spinner-main-wrapper').addClass('private-spinner--active');
+        }else{
+        if(height != '')
+                $(id).removeClass(height);
+            $(id+' .private-spinner-main-wrapper').addClass('private-spinner--hide');
+            $(id+' .private-spinner-main-wrapper').removeClass('private-spinner--active');
+        }
+    }
+
 });

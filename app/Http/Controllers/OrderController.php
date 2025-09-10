@@ -40,6 +40,19 @@ class OrderController extends Controller
             Log::error($e->getMessage());
         }
     }
+    public function getOrder(){
+        try {
+            $data = [];
+            $total = 0;
+            return response()->json([
+                'status' 			=> 'Success',
+                'data'			=> $data ?? [],
+                'total' => $total,
+            ], 200);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+        }
+    }
      public function getEmployeeFields()
     {
         try {

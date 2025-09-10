@@ -37,13 +37,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#reports">
-                        <ion-icon name="bar-chart-outline"></ion-icon> Reports
+                    <a class="nav-link" data-bs-toggle="tab" href="#quotations">
+                        <ion-icon name="document-text-outline"></ion-icon> Quotations
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#orders">
                         <ion-icon name="cart-outline"></ion-icon> Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#reports">
+                        <ion-icon name="bar-chart-outline"></ion-icon> Reports
                     </a>
                 </li>
             </ul>
@@ -73,8 +78,8 @@
             <div class="tab-pane fade" id="orders">
                 @include('pages._partials.orders')
             </div>
-            <div class="tab-pane fade" id="settings">
-                @include('pages._partials.settings')
+            <div class="tab-pane fade" id="quotations">
+                @include('pages._partials.quotation')
             </div>
         </div>
     </div>
