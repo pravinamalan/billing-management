@@ -193,7 +193,7 @@ export class TabulatorTable {
      * Handle Dwoload
     */
     async handleDownload(id) {
-        const baseUrl = "http://127.0.0.1:8000"; 
+        const baseUrl = "http://127.0.0.1:8000";
         const url = `${baseUrl}/quotations/${id}/pdf`;
         toggleLoaderHideShow("QUOTATION_LOADER",'show');
         try {
@@ -201,12 +201,12 @@ export class TabulatorTable {
                 responseType: 'blob'
             });
 
-          
+
             const blob = new Blob([response.data], { type: 'application/pdf' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
 
-           
+
             const disposition = response.headers['content-disposition'];
             let fileName = `quotation_${id}.pdf`;
             if (disposition && disposition.indexOf('filename=') !== -1) {
@@ -251,7 +251,7 @@ export class TabulatorTable {
         }
         const sectionSelector = `.section-wrapper[data-section="${this.module}"]`;
         toggleLoaderV1( sectionSelector, mode, height);
-        
+
         if (this.tableInstance) {
             this.tableInstance.setData(this.url, params)
             .then(() => {

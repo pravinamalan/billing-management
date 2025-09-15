@@ -6,25 +6,6 @@ return [
             "section_id"      => "1",
             "section_slug"    => "EMPLOYEE_INFORMATION",
             "fields"        => [
-                "employee_id" => [
-                    "field_key" => "BM-EMPLOYEE-ID-abc123",
-                    "field_slug" => "EMPLOYEE_ID",
-                    "field_label" => "Employee ID",
-                    "is_enabled" => true,
-                    "field_type" => "inputText",
-                    "field_data_type" => "string",
-                    "field_properties" => json_encode([
-                        "field_database_name" => "employee_id",
-                        "field_table_name" => "employees",
-                        "field_name" => "employee_id",
-                        "placeholder" => [
-                            "label" => "Auto-generated Employee ID"
-                        ],
-                        "custom_class" => [
-                            "readonly-field"
-                        ]
-                    ])
-                ],
                 "full_name" => [
                     "field_key" => "BM-EMPLOYEE-FULL-NAME-def456",
                     "field_slug" => "FULL_NAME",
@@ -38,6 +19,84 @@ return [
                         "field_name" => "full_name",
                         "placeholder" => [
                             "label" => "Enter Employee Full Name"
+                        ],
+                        "custom_class" => [
+                            "filter-count-element"
+                        ]
+                    ])
+                ],
+                "contact_number" => [
+                    "field_key" => "BM-EMPLOYEE-CONTACT-jkl012",
+                    "field_slug" => "CONTACT_NUMBER",
+                    "field_label" => "Contact Number",
+                    "is_enabled" => true,
+                    "field_type" => "inputText",
+                    "field_data_type" => "lookup",
+                    "field_properties" => json_encode([
+                        "field_database_name" => "contact_number",
+                        "field_table_name" => "employees",
+                        "field_name" => "contact_number",
+                        "input_mask" => "(###) ###-####",
+                        "placeholder" => [
+                            "label" => "Enter Contact Number"
+                        ],
+                        "custom_class" => [
+                            "filter-count-element"
+                        ]
+                    ])
+                ],
+                "emergency_contact_number" => [
+                    "field_key" => "BM-EMPLOYEE-EMERGENCY-CONTACT-jkl013",
+                    "field_slug" => "EMERGENCY_CONTACT_NUMBER",
+                    "field_label" => "Emergency Contact Number",
+                    "is_enabled" => true,
+                    "field_type" => "inputText",
+                    "field_data_type" => "lookup",
+                    "field_properties" => json_encode([
+                        "field_database_name" => "emergency_contact_number",
+                        "field_table_name" => "employees",
+                        "field_name" => "emergency_contact_number",
+                        "input_mask" => "(###) ###-####",
+                        "placeholder" => [
+                            "label" => "Enter Emergency Contact Number"
+                        ],
+                        "custom_class" => [
+                            "filter-count-element"
+                        ]
+                    ])
+                ],
+                "employee_email" => [
+                    "field_key" => "BM-EMPLOYEE-EMAIL-def456",
+                    "field_slug" => "EMPLOYEE_EMAIL",
+                    "field_label" => "Email",
+                    "is_enabled" => true,
+                    "field_type" => "inputText",
+                    "field_data_type" => "string",
+                    "field_properties" => json_encode([
+                        "field_database_name" => "employee_email",
+                        "field_table_name" => "orders",
+                        "field_name" => "employee_email",
+                        "placeholder" => [
+                            "label" => "Enter Email"
+                        ],
+                        "custom_class" => [
+                            "filter-count-element"
+                        ]
+                    ])
+                ],
+                "address" => [
+                    "field_key" => "BM-EMPLOYEE-ADDRESS-mno345",
+                    "field_slug" => "ADDRESS",
+                    "field_label" => "Address",
+                    "is_enabled" => true,
+                    "field_type" => "textarea",
+                    "field_data_type" => "string",
+                    "field_properties" => json_encode([
+                        "field_database_name" => "address",
+                        "field_table_name" => "employees",
+                        "field_name" => "address",
+                        "placeholder" => [
+                            "label" => "Enter Current Address"
                         ],
                         "custom_class" => [
                             "filter-count-element"
@@ -70,45 +129,6 @@ return [
                                 "Mechanic" => "Mechanic",
                                 "Accountant" => "Accountant"
                             ]
-                        ],
-                        "custom_class" => [
-                            "filter-count-element"
-                        ]
-                    ])
-                ],
-                "contact_number" => [
-                    "field_key" => "BM-EMPLOYEE-CONTACT-jkl012",
-                    "field_slug" => "CONTACT_NUMBER",
-                    "field_label" => "Contact Number",
-                    "is_enabled" => true,
-                    "field_type" => "inputText",
-                    "field_data_type" => "lookup",
-                    "field_properties" => json_encode([
-                        "field_database_name" => "contact_number",
-                        "field_table_name" => "employees",
-                        "field_name" => "contact_number",
-                        "input_mask" => "(###) ###-####",
-                        "placeholder" => [
-                            "label" => "Enter Contact Number"
-                        ],
-                        "custom_class" => [
-                            "filter-count-element"
-                        ]
-                    ])
-                ],
-                "address" => [
-                    "field_key" => "BM-EMPLOYEE-ADDRESS-mno345",
-                    "field_slug" => "ADDRESS",
-                    "field_label" => "Address",
-                    "is_enabled" => true,
-                    "field_type" => "textarea",
-                    "field_data_type" => "string",
-                    "field_properties" => json_encode([
-                        "field_database_name" => "address",
-                        "field_table_name" => "employees",
-                        "field_name" => "address",
-                        "placeholder" => [
-                            "label" => "Enter Current Address"
                         ],
                         "custom_class" => [
                             "filter-count-element"
@@ -260,44 +280,6 @@ return [
                         "field_name" => "documents",
                         "placeholder" => [
                             "label" => "Enter License Number, Aadhar Details, etc."
-                        ],
-                        "custom_class" => [
-                            "filter-count-element"
-                        ]
-                    ])
-                ],
-                "advance_taken" => [
-                    "field_key" => "BM-EMPLOYEE-ADVANCE-hij456",
-                    "field_slug" => "ADVANCE_TAKEN",
-                    "field_label" => "Advance Taken",
-                    "is_enabled" => true,
-                    "field_type" => "inputText",
-                    "field_data_type" => "number",
-                    "field_properties" => json_encode([
-                        "field_database_name" => "advance_taken",
-                        "field_table_name" => "employees",
-                        "field_name" => "advance_taken",
-                        "placeholder" => [
-                            "label" => "Enter Advance Amount"
-                        ],
-                        "custom_class" => [
-                            "filter-count-element"
-                        ]
-                    ])
-                ],
-                "balance_salary" => [
-                    "field_key" => "BM-EMPLOYEE-BALANCE-klm789",
-                    "field_slug" => "BALANCE_SALARY",
-                    "field_label" => "Balance Salary",
-                    "is_enabled" => true,
-                    "field_type" => "inputText",
-                    "field_data_type" => "number",
-                    "field_properties" => json_encode([
-                        "field_database_name" => "balance_salary",
-                        "field_table_name" => "employees",
-                        "field_name" => "balance_salary",
-                        "placeholder" => [
-                            "label" => "Enter Balance Salary Amount"
                         ],
                         "custom_class" => [
                             "filter-count-element"

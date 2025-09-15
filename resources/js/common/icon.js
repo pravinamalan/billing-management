@@ -46,5 +46,7 @@ const addIcon =  ({ fill = "#3e4f69", width = "15", height = "15" } = {}) => `
             </g>
         </g>
     </svg>`
-const removeIcon = ({ fill = "#3e4f69", width = "15", height = "15" } = {}) => `<svg class="svg-position position--bottom position--mr-2" width="${width}" height="${height}" viewBox="0 0 1024 1024" class="icon" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M352 480h320a32 32 0 110 64H352a32 32 0 010-64z"/><path fill="#000000" d="M512 896a384 384 0 100-768 384 384 0 000 768zm0 64a448 448 0 110-896 448 448 0 010 896z"/></svg>`
+const removeIcon = ({ fill = "#3e4f69", width = "15", height = "15" } = {}) => `
+    <svg class="svg-position position--bottom position--mr-2" width="${width}" height="${height}" viewBox="0 0 1024 1024" class="icon" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M352 480h320a32 32 0 110 64H352a32 32 0 010-64z"/><path fill="#000000" d="M512 896a384 384 0 100-768 384 384 0 000 768zm0 64a448 448 0 110-896 448 448 0 010 896z"/></svg>`
+    
 export {viewIcon, editIcon, deleteIcon ,saveIcon, closeIcon, cancelIcon, downloadIcon, addIcon, removeIcon}

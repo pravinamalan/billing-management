@@ -9,7 +9,7 @@
         <hr class="mt-0 mb-2">
     </div>
     @include('widget/list/table-pre-loader')
-    <div class="private-spinner-main-wrapper private-spinner--hide">
+    {{-- <div class="private-spinner-main-wrapper private-spinner--hide">
         <div class="private-spinner private-spinner--link private-spinner--huge">
             <div class="private-spinner-wrapper">
                 <svg height="64" width="64" class="private-spinner__ring" viewBox="0 0 50 50">
@@ -18,7 +18,7 @@
                 </svg>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="section-wrapper" data-section="QUOTATION">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between p-3">
             <div class="tabluator-input-search-wrapper d-none" id="QUOTATION_SEARCH">
@@ -29,7 +29,7 @@
                 <span class="focus-border"></span>
                 <img class="search-clear visibility-hide" src="https://inflowcare.s3.amazonaws.com/static/icons/clear.svg" width="12" height="12" style="opacity: .5;">
             </div>
-            <div class="mt-2 mt-lg-0"> 
+            <div class="mt-2 mt-lg-0">
                 <button type="button" class="btn btn-ash refresh-table  d-none" data-section="QUOTATION">
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.5127 6.23126H14.5127M14.5127 6.23126V3.23126M14.5127 6.23126L12.3877 4.1125C11.6187 3.34286 10.6387 2.81859 9.57172 2.60601C8.5047 2.39343 7.3986 2.50209 6.39335 2.91824C5.38809 3.33439 4.52885 4.03933 3.9243 4.9439C3.31975 5.84847 2.99707 6.91201 2.99707 8C2.99707 9.08799 3.31975 10.1515 3.9243 11.0561C4.52885 11.9607 5.38809 12.6656 6.39335 13.0818C7.3986 13.4979 8.5047 13.6066 9.57172 13.394C10.6387 13.1814 11.6187 12.6571 12.3877 11.8875" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
