@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,8 @@ Route::get('/quotations/create', [QuotationController::class, 'create'])->name('
 Route::post('/quotation/save', [QuotationController::class, 'store']);
 Route::get('/quotations/list', [QuotationController::class, 'show'])->name('quotations.show');
 Route::get('/quotations/{id}/pdf', [QuotationController::class, 'downloadPdf'])->name('quotations.pdf');
+
+// Settings
+Route::get('/settings', [SettingsController::class, 'index']);
+Route::get('/users/list', [SettingsController::class, 'getUsers']);
+Route::get('/users/fields', [SettingsController::class, 'getFields']);

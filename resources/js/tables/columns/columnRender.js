@@ -3,6 +3,7 @@ import { checkEmpty } from "../../helper/common-helper";
 import { employeeColumns } from "./employeeColumns";
 import { orderColumns } from "./orderColumns";
 import { quotationColumns } from "./quotationColumns";
+import { userColumns } from "./userColumns";
 let moduleName;
 export class ColumnRenderer {
 
@@ -10,7 +11,8 @@ export class ColumnRenderer {
         const renderers = {
             "EMPLOYEE": employeeColumns,
             "ORDER" : orderColumns,
-            "QUOTATION" : quotationColumns
+            "QUOTATION" : quotationColumns,
+            "SETTNGS" : userColumns
         };
         moduleName = module;
         return renderers[module] || [];
@@ -62,7 +64,7 @@ export class ColumnRenderer {
 
         if (actions.includes('view')) {
             actionHTML += `
-                <span class="icon-box view-action"
+                <span class="icon-box view-action cursor-pointer"
                     data-id="${id}
                     title="View" data-section=${moduleName}>
                     ${viewIcon({ width: 20, height: 20 })}
@@ -71,7 +73,7 @@ export class ColumnRenderer {
 
         if (actions.includes('edit')) {
             actionHTML += `
-                <span class="icon-box edit-action"
+                <span class="icon-box edit-action cursor-pointer"
                     data-id="${id}
                     title="Edit" data-section=${moduleName}>
                     ${editIcon({ width: 18, height: 18 })}
@@ -80,7 +82,7 @@ export class ColumnRenderer {
 
         if (actions.includes('delete')) {
             actionHTML += `
-                <span class="icon-box delete-action"
+                <span class="icon-box delete-action cursor-pointer"
                     data-id="${id}
                     title="Delete" data-section=${moduleName}>
                     ${deleteIcon({ width: 18, height: 18 })}
@@ -89,7 +91,7 @@ export class ColumnRenderer {
 
         if (actions.includes('download')) {
             actionHTML += `
-                <span class="icon-box download-action"
+                <span class="icon-box download-action cursor-pointer"
                     data-id="${id}
                     title="Download" data-section=${moduleName}>
                     ${downloadIcon({ width: 18, height: 18 })}

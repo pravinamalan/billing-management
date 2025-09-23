@@ -22,13 +22,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#income">
-                        <ion-icon name="cash-outline"></ion-icon> Income
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#expense">
-                        <ion-icon name="wallet-outline"></ion-icon> Expense
+                    <a class="nav-link" data-bs-toggle="tab" href="#transactions">
+                        <ion-icon name="cash-outline"></ion-icon> Transactions
                     </a>
                 </li>
                 <li class="nav-item">
@@ -63,11 +58,8 @@
             <div class="tab-pane fade" id="dashboard">
                 @include('pages._partials.dashboard')
             </div>
-            <div class="tab-pane fade" id="income">
-                @include('pages._partials.income')
-            </div>
-            <div class="tab-pane fade" id="expense">
-                @include('pages._partials.expense')
+            <div class="tab-pane fade" id="transactions">
+                @include('pages._partials.transactions')
             </div>
             <div class="tab-pane fade" id="employee">
                 @include('pages._partials.employee')

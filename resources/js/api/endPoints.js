@@ -25,6 +25,10 @@ export const apiEndPoints = (module = 'ORDER', key = null) =>{
             'EDIT'   : 'employee/edit/{%ORDER_ID%}',
             'UPDATE' : 'employee/update/{%ORDER_ID%}',
             'DELETE' : 'employee/delete/{%ORDER_ID%}',
+        },
+        "USERS" : {
+            'FIELDS' : 'users/fields',
+            "LIST"   : 'users/list'
         }
     }
 

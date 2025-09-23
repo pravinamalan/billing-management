@@ -1,0 +1,19 @@
+.DASHBOARD_WRRAPPER{
+    .dashboard-summary{
+        .summary-card{
+            box-shadow: 0px 3.2055945396px 5px 0px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8e8e8;
+            background-color: #fff;
+            border-radius: 5px;
+            // padding: 10px 10px;
+            margin: 5px !important;
+            // transition: 5s;
+            max-width: 300px;
+            width: 100%;
+            border-left: 5px solid #3366ff !important;
+            .card{
+                border: none;
+            }
+        }
+    }
+}

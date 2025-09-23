@@ -2,6 +2,7 @@
 @use "../abstracts/data-table" as *;
 @use "../abstracts/loader" as *;
 @use "../abstracts/tabulator" as *;
+@use "./_partials/dashboard.scss";
 .whole-container-section {
     border-radius: 5px !important;
     .sidebar-section {
