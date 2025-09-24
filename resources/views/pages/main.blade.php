@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{ asset('dataTable/css/fixedHeader.dataTables.min.css') }}">
 @section('page-content')
 <div class="row mx-0 whole-container-section ">
-    <div class="col-lg-2 col-xs-12 px-0 sidebar-section mb-3 mb-lg-0 referral-sidebar-nav">
+    <div class="col-lg-2 col-xs-12 px-0 sidebar-section mb-3 mb-lg-0 ">
         <div class="sidebar-wrapper me-lg-3 bg-white">
             <ul class="nav nav-tabs flex-column border-0 nav-list">
                  <li class="nav-item">
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="col-lg-10 col-xs-12 px-0 position-relative bg-white">
+    <div class="col-lg-10 col-xs-12 px-0 position-relative">
         <div class="tab-content">
             <div class="tab-pane fade show active" id="home">
                 @include('pages._partials.home')
@@ -61,7 +61,7 @@
             <div class="tab-pane fade" id="transactions">
                 @include('pages._partials.transactions')
             </div>
-            <div class="tab-pane fade" id="employee">
+            <div class="tab-pane fade bg-white" id="employee">
                 @include('pages._partials.employee')
             </div>
             <div class="tab-pane fade" id="reports">

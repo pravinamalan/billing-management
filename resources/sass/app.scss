@@ -17,7 +17,7 @@
 body {
     font-family: 'Rubik', sans-serif !important;
     font-weight: 400 !important;
-    background-color: #eff5f5 !important;
+    background-color: #eef0f7 !important;
     .cursor-pointer {
         cursor: pointer;
     }
@@ -33,6 +33,12 @@ body {
         font-weight: 300;
         font-family: "Rubik", sans-serif;
         margin: 5px 0 0 0;
+    }
+    .tab-content{
+        margin-bottom: 100px !important;
+    }
+    .search-input{
+        border: 1px solid #525b69 !important;
     }
     .form-group {
         margin-bottom: 12px !important;

@@ -14,3 +14,5 @@
 <script type="text/javascript" src="{{URL::to('/')}}/plugins/tabulator/js/tabulator.min.js"></script>
 {{-- Calendar --}}
 <script type="text/javascript" src="{{URL::to('/')}}/plugins/full-calendar/js/calendar.min.js"></script>
+
+

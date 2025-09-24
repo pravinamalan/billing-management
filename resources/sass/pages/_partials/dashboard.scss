@@ -1,19 +1,49 @@
+@use "../../mixins/breakpoints" as *;
 .DASHBOARD_WRRAPPER{
     .dashboard-summary{
+        display: grid;
+        grid-template-columns: 24% 24% 24% 24% !important;
+        grid-gap: 0rem 0.5rem !important;
+         @include media-max($screen-sm) {
+
+            grid-template-columns: auto !important;
+        }
         .summary-card{
             box-shadow: 0px 3.2055945396px 5px 0px rgba(0, 0, 0, 0.08);
             border: 1px solid #e8e8e8;
             background-color: #fff;
             border-radius: 5px;
-            // padding: 10px 10px;
             margin: 5px !important;
-            // transition: 5s;
-            max-width: 300px;
-            width: 100%;
-            border-left: 5px solid #3366ff !important;
+            border-left: 5px solid #7267ef !important;
             .card{
                 border: none;
             }
         }
     }
+    .full-shadow{
+        box-shadow: 0 2px 6px -1px rgba(0, 0, 0, .1);
+        margin-bottom: 24px;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+    .bottom-chart{
+        padding: 10px 0px !important;
+        display: grid;
+        grid-template-columns: 49% 49% !important;
+        grid-gap: 0rem 1rem !important;
+        @include media-max($screen-sm) {
+
+            grid-template-columns: auto !important;
+        }
+    }
+    .top-chart{
+        padding: 10px 1.5rem !important;
+        display: grid;
+        grid-template-columns: 69% 29% !important;
+        grid-gap: 0rem 1rem !important;
+        @include media-max($screen-sm) {
+
+            grid-template-columns: auto !important;
+        }
+    }
+
 }

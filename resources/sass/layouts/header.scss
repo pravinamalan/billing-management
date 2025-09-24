@@ -1,10 +1,12 @@
 @use "../mixins/breakpoints" as *;
 .header {
-  background-color: #3c2d89 !important;
+  background-color: #fff !important;
   padding: 10px 20px !important;
 
   h4 {
-    color: #f6f6f6 !important;
+    color: #7267ef !important;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
     .dropdown {
@@ -68,6 +70,17 @@
             .card-body{
                 padding: 10px 20px !important;
             }
+        }
+    }
+    .user-details {
+        color: #525b69;
+        .user-name{
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .user-desc{
+            font-size: 13px;
+            font-weight: 400;
         }
     }
 }

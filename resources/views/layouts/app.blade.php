@@ -27,7 +27,7 @@
 <body>
      {{-- Footer --}}
     @include('layouts/header')
-    <div class="container-fluid page-content-wrapper" style="margin-top: 4rem !important">
+    <div class="container-fluid page-content-wrapper" style="margin-top: 5rem !important">
         @yield('page-content')
     </div>
     {{-- Footer --}}
