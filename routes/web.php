@@ -29,8 +29,11 @@ Route::group(['prefix' => 'employee'], function () {
 });
 
 
-Route::get('/order/fields', [OrderController::class, 'index']);
-Route::get('/order/list', [OrderController::class, 'getOrder']);
+Route::group(['prefix' => 'order'], function () {
+    Route::get('fields', [OrderController::class, 'create'])->named('order.fields');
+    Route::get('list', [OrderController::class, 'index'])->named('order.lists');
+});
+
 Route::get('/quotation/fields', [QuotationController::class, 'getQuotationFields']);
 Route::get('/quotations/create', [QuotationController::class, 'create'])->name('quotations.create');
 Route::post('/quotation/save', [QuotationController::class, 'store']);

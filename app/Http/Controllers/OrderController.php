@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Order;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,42 +17,48 @@ class OrderController extends Controller
     public function index()
     {
         try {
-            $fields = config('order.fields');
-
-            return response()->json([
-                'status' 			=> 'Success',
-                'fields'			=> $fields ?? [],
-            ], 200);
-
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-        }
-    }
-
-    public function getOrder(){
-        try {
             $data = [];
             $total = 0;
             return response()->json([
-                'status' 			=> 'Success',
-                'data'			=> $data ?? [],
+                'status'             => 'Success',
+                'data'            => $data ?? [],
                 'total' => $total,
             ], 200);
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }
     }
-    //  public function getEmployeeFields()
-    // {
-
-    // }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        try {
+            $fields = config('order.fields');
+
+            $OrderInformation = $fields['Order Information'] ?? [];
+
+            foreach ($OrderInformation['fields'] as $key => &$field) {
+                if ($key === 'operator_assigned') {
+                    $properties = json_decode($field['field_properties'], true) ?? [];
+                    $properties['options']['values'] = Employee::whereIn('role_designation', ['Driver', 'Operator'])
+                        ->pluck('full_name', 'id')
+                        ->toArray();
+                    $field['field_properties'] = json_encode($properties);
+                }
+            }
+            unset($field);
+
+            $fields['Order Information'] = $OrderInformation;
+
+            return response()->json([
+                'status'             => 'Success',
+                'fields'            => $fields ?? [],
+            ], 200);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+        }
     }
 
     /**

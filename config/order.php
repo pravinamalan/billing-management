@@ -136,6 +136,10 @@ return [
                         "placeholder" => [
                             "label" => "Enter Driver/Operator Name"
                         ],
+                        "options" => [
+                            "predefined" => "Yes",
+                            "values" => []
+                        ],
                         "custom_class" => [
                             "filter-count-element"
                         ]
