@@ -27,19 +27,7 @@ class OrderController extends Controller
             Log::error($e->getMessage());
         }
     }
-    public function getEmployee(){
-        try {
-            $data = DB::table('employees')->get();
-            $total = DB::table('employees')->count();
-            return response()->json([
-                'status' 			=> 'Success',
-                'data'			=> $data ?? [],
-                'total' => $total,
-            ], 200);
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-        }
-    }
+
     public function getOrder(){
         try {
             $data = [];
@@ -53,20 +41,10 @@ class OrderController extends Controller
             Log::error($e->getMessage());
         }
     }
-     public function getEmployeeFields()
-    {
-        try {
-            $fields = config('employee.fields');
+    //  public function getEmployeeFields()
+    // {
 
-            return response()->json([
-                'status' 			=> 'Success',
-                'fields'			=> $fields ?? [],
-            ], 200);
-
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-        }
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.

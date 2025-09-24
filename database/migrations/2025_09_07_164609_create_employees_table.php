@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('full_name', 100);
             $table->string('role_designation', 50);
             $table->string('contact_number', 20)->nullable();
+            $table->string('emergency_contact_number', 20)->nullable();
+            $table->string('employee_email', 150)->nullable();
             $table->text('address')->nullable();
             $table->date('joining_date')->nullable();
             $table->string('salary_type', 20)->nullable();

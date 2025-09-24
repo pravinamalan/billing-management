@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\SettingsController;
@@ -20,9 +21,15 @@ Route::get('/', function () {
     return view('pages.main');
 });
 
+Route::group(['prefix' => 'employee'], function () {
+    Route::get('fields', [EmployeeController::class, 'create'])->named('employee.fields');
+    Route::get('list', [EmployeeController::class, 'index'])->named('employee.list');
+    Route::post('save', [EmployeeController::class, 'store'])->named('employee.save');
+    Route::get('{id}', [EmployeeController::class, 'show'])->named('employee.show');
+});
+
+
 Route::get('/order/fields', [OrderController::class, 'index']);
-Route::get('/employee/fields', [OrderController::class, 'getEmployeeFields']);
-Route::get('/employee/list', [OrderController::class, 'getEmployee']);
 Route::get('/order/list', [OrderController::class, 'getOrder']);
 Route::get('/quotation/fields', [QuotationController::class, 'getQuotationFields']);
 Route::get('/quotations/create', [QuotationController::class, 'create'])->name('quotations.create');
