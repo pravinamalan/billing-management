@@ -2,6 +2,7 @@
 import { getPromise } from "../api/apiService";
 import { apiEndPoints } from "../api/endPoints";
 import { toggleLoaderHideShow, toggleLoaderV1 } from "../helper/common-helper";
+import { ListSidePanel } from "../helper/list/side-pannel";
 import { ColumnRenderer } from "./columns/columnRender";
 
 
@@ -158,6 +159,12 @@ export class TabulatorTable {
             const id = $(event.currentTarget).data('id');
             this.handleDownload(id);
         });
+
+        $('body').on('click', `.edit-action[data-section="${this.module}"]`, (event) => {
+            const id = $(event.currentTarget).data('id');
+
+            this.handleEdit(id);
+        });
     }
 
     /**
@@ -189,6 +196,24 @@ export class TabulatorTable {
     handleRefresh() {
         this.refresh();
     }
+
+    /**
+     * Handle Edit
+     */
+    async handleEdit(id){
+
+        const config = {
+            mode: "EDIT",
+            module: this.module,
+            element: "#renderWrapper",
+            rowId: id,
+        };
+
+        const employeePanel = new ListSidePanel(config);
+
+        employeePanel.initialize();
+    }
+
     /**
      * Handle Dwoload
     */

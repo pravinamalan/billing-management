@@ -22,9 +22,9 @@ export const apiEndPoints = (module = 'ORDER', key = null) =>{
             'FIELDS' : 'employee/fields',
             "LIST"   : 'employee/list',
             'SAVE'   : 'employee/save',
-            'EDIT'   : 'employee/edit/{%ORDER_ID%}',
-            'UPDATE' : 'employee/update/{%ORDER_ID%}',
-            'DELETE' : 'employee/delete/{%ORDER_ID%}',
+            'EDIT'   : 'employee/edit/{%EMPLOYEE_ID%}',
+            'UPDATE' : 'employee/update/{%EMPLOYEE_ID%}',
+            'DELETE' : 'employee/delete/{%EMPLOYEE_ID%}',
         },
         "USERS" : {
             'FIELDS' : 'users/fields',

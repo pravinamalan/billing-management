@@ -144,6 +144,6 @@ export const employeeColumns = [
         headerTooltip: "Action",
         frozen:true,
         width: 150,
-        formatter: (cell) => ColumnRenderer.actionFormatter(cell, ['edit', 'view', 'delete'])
+        formatter: (cell) => ColumnRenderer.actionFormatter(cell, ['edit', 'delete'])
     }
 ];

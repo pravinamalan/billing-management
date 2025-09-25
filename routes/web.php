@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.main');
+    return view('auth.login');
 });
 
 Route::group(['prefix' => 'employee'], function () {
