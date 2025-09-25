@@ -13,6 +13,7 @@ class Employee extends Model
     const COL_FULL_NAME        = 'full_name';
     const COL_ROLE_DESIGNATION = 'role_designation';
     const COL_CONTACT_NUMBER   = 'contact_number';
+    const COL_EMERGENCY_CONTACT_NUMBER = 'emergency_contact_number';
     const COL_EMPLOYEE_EMAIL   = 'employee_email';
     const COL_ADDRESS          = 'address';
     const COL_JOINING_DATE     = 'joining_date';
@@ -33,6 +34,7 @@ class Employee extends Model
         self::COL_ROLE_DESIGNATION,
         self::COL_EMPLOYEE_EMAIL,
         self::COL_CONTACT_NUMBER,
+        self::COL_EMERGENCY_CONTACT_NUMBER,
         self::COL_ADDRESS,
         self::COL_JOINING_DATE,
         self::COL_SALARY_TYPE,
@@ -59,6 +61,7 @@ class Employee extends Model
         self::COL_ROLE_DESIGNATION,
         self::COL_EMPLOYEE_EMAIL,
         self::COL_CONTACT_NUMBER,
+        self::COL_EMERGENCY_CONTACT_NUMBER,
         self::COL_ADDRESS,
         self::COL_JOINING_DATE,
         self::COL_SALARY_TYPE,

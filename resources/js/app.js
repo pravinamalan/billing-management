@@ -21,7 +21,6 @@ import { ListSidePanel } from "./helper/list/side-pannel";
 import { customSelect2, customSelectV2 } from "./helper/select2";
 import { SidePanel } from "./panels/sidePanelConfig";
 import { TabulatorTable } from "./tables/TabulatorTable";
-import Chart from "chart.js/auto";
 import ApexCharts from "apexcharts";
 class OrdersTable {
     static TABLE_NAME = "ORDERS_TABLE";

@@ -12,6 +12,8 @@ class EmployeesTrasnformer
             'full_name'         => $employee->full_name,
             'role_designation'  => $employee->role_designation,
             'contact_number'    => $employee->contact_number,
+            'emergency_contact_number' => $employee->emergency_contact_number,
+            'employee_email'    => $employee->employee_email,
             'address'           => $employee->address,
             'joining_date'      => $employee->joining_date?->format('Y-m-d'),
             'salary_type'       => $employee->salary_type,

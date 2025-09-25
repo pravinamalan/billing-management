@@ -53,7 +53,7 @@ export const employeeColumns = [
     },
     {
         title: `Email`,
-        field: 'email',
+        field: 'employee_email',
         resizable: false,
         sorter: "alphanum",
         headerSort: true,
@@ -61,7 +61,7 @@ export const employeeColumns = [
         responsive: 0,
         width: 200,
         headerTooltip: "Email Address",
-        formatter: (cell) => ColumnRenderer.genericFormatter(cell, 'email')
+        formatter: (cell) => ColumnRenderer.genericFormatter(cell, 'employee_email')
     },
     {
         title: `Emergency Contact Number`,
