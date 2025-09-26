@@ -1,4 +1,11 @@
 .login-wrapper{
+    background: url('/resources/assets/images/login-bg-new.jpg') center center / cover no-repeat;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.forgot-wrapper{
+    background: url('/resources/assets/images/forgot-bg.jpg') center center / cover no-repeat;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -22,7 +29,7 @@
     width: 300px;
     max-width: 400px !important;
     padding: 2rem;
-    background: rgba(255,255,255,0.1); /* optional light form bg */
+    background: rgba(255,255,255,0.1);
     border-radius: 8px;
     @media (min-width:576px) {
         width: 400px !important;

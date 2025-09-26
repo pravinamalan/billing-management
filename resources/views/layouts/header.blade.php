@@ -44,7 +44,7 @@
                     </svg>
             </button>
             <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-start">
-                <li><a class="dropdown-item" href="/"><ion-icon name="home-outline"></ion-icon>Home</a></li>
+                <li><a class="dropdown-item" href="/home"><ion-icon name="home-outline"></ion-icon>Home</a></li>
                 <li><a class="dropdown-item" href="#"><ion-icon name="person-outline"></ion-icon>Profile</a></li>
                 <li><a class="dropdown-item" href="/settings"> <ion-icon name="settings-outline"></ion-icon> Settings</a></li>
                 <hr>

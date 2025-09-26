@@ -17,9 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//* Add controller properly
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/home', function () {
+    return view('pages.main');
+});
+
+Route::get('/forget-password', function () {
+    return view('auth.forgot-password');
+})->name('forgot.password.get');
+Route::post('/forget-password', [EmployeeController::class, 'submitForgotPasswordForm'])->name('forgot.password.post');
 
 Route::group(['prefix' => 'employee'], function () {
     Route::get('fields', [EmployeeController::class, 'create'])->named('employee.fields');

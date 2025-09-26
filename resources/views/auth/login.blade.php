@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <div class="login-wrapper" style="background: url('{{ asset('images/login-bg-new.jpg') }}') center center / cover no-repeat;">
+    <div class="login-wrapper">
         <div class="login-card">
             <div class="login-header text-center">
                 <svg width="40px" height="40px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -20,7 +20,7 @@
             <form class="login-form" id="loginForm" method="POST" action="/authenticate">
                 <div class="form-group">
                     <label class="text-color text-color--dark ">
-                        <span>Email<span class="mandatory d-none">*</span></span>
+                        <span>Email<span class="mandatory text-danger">*</span></span>
                     </label>
                     <div class="input-field-wrapper  ">
                         <input type="text" class="form-control  email-validator" id="email-input" name="email" value="" placeholder="Enter Email" data-placeholder-name="Enter Email" false="" autocomplete="off">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label class="text-color text-color--dark " for="inputPassword">
-                        <span>Password<span class="mandatory d-none">*</span></span>
+                        <span>Password<span class="mandatory text-danger">*</span></span>
                     </label>
                     <div class="input-field-wrapper  ">
                         <input type="password" class="form-control  password-validator" id="inputPassword" name="password" value="" placeholder="Enter Password" data-placeholder-name="Enter Password" false="" autocomplete="off">
@@ -44,7 +44,7 @@
                             Remember me
                         </span>
                     </label>
-                    <a href="#" class="forgot-password text-white">Forgot password?</a>
+                    <a href="{{ route('forgot.password.get') }}" class="forgot-password text-white">Forgot password?</a>
                 </div>
                 <div class="text-center mt-3">
                     <button type="submit" class="login-btn">Sign In</button>
