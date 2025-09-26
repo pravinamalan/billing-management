@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="login-wrapper">
+
         <div class="login-card">
             <div class="login-header text-center">
                 <svg width="40px" height="40px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -18,13 +19,20 @@
             </div>
 
             <form class="login-form" id="loginForm" method="POST" action="/authenticate">
+                @if (Session::has('error'))
+                        <div class="alert alert-danger text-danger text-center text-capitalize m-auto mb-3" role="alert">
+                            {{ Session::get('error') }}
+                        </div>
+                @endif
                 <div class="form-group">
                     <label class="text-color text-color--dark ">
                         <span>Email<span class="mandatory text-danger">*</span></span>
                     </label>
                     <div class="input-field-wrapper  ">
                         <input type="text" class="form-control  email-validator" id="email-input" name="email" value="" placeholder="Enter Email" data-placeholder-name="Enter Email" false="" autocomplete="off">
-                        <span class="error error-msg email-input_error " id="email-input_error"></span>
+                        @if ($errors->has('email'))
+                            <span class="error-text text-danger text-capitalize">{{ $errors->first('email') }}*</span>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
@@ -33,7 +41,9 @@
                     </label>
                     <div class="input-field-wrapper  ">
                         <input type="password" class="form-control  password-validator" id="inputPassword" name="password" value="" placeholder="Enter Password" data-placeholder-name="Enter Password" false="" autocomplete="off">
-                        <span class="error error-msg inputPassword_error " id="inputPassword_error"></span>
+                        @if ($errors->has('password'))
+                            <span class="error-text text-danger text-capitalize">{{ $errors->first('password') }}*</span>
+                        @endif
                     </div>
                 </div>
                 <div class="form-options d-flex align-items-center justify-content-between">

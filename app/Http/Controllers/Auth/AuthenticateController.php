@@ -14,7 +14,7 @@ class AuthenticateController extends Controller
         $requestValue = $request->validated();
 
         if(!$token = Auth::attempt(($requestValue))) {
-            redirect()->back()->with('error', 'Invalid Credentials');
+            return redirect()->back()->with('error', 'Invalid Credentials');
         }
 
         return redirect()->route('home')->with('token', $token);
