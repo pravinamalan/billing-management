@@ -76,7 +76,7 @@ export const toggleSidePanel = () => {
 };
 
 export function toggleLoaderHideShow(section, mode = "hide", height = "") {
-    
+
 
     if (mode == "show") {
         $("#" + section + " .private-spinner-main-wrapper").removeClass(
@@ -104,9 +104,9 @@ export function toggleLoaderHideShow(section, mode = "hide", height = "") {
 }
 /**
  * Loader | Hide/Show
- * @param {string} Parent 
- * @param {string} Mode 
- * @param {string} Height 
+ * @param {string} Parent
+ * @param {string} Mode
+ * @param {string} Height
  */
 export function toggleLoaderV1(parent, mode="hide", height = ''){
     let parentElement = document.querySelector(parent);
@@ -257,7 +257,7 @@ export const renderFormField = () => {
                     <div class="form-group">
                         <label>Phone</label>
                         <div class="input-field-wrapper">
-                            <input type="text" name="customer_phone" class="form-control">
+                            <input type="text" name="customer_phone" id="customerPhone" class="form-control" data-mask="(999) 999-9999" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -309,3 +309,10 @@ export const renderFormField = () => {
         </div>
     </form>`;
 };
+
+export function initInputMask(container = "#quotationPannel") {
+    $(container).find("[data-mask]").each(function () {
+        const mask = $(this).data("mask") || "(999) 999-9999";
+        $(this).inputmask(mask);
+    });
+}

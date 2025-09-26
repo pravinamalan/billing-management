@@ -1,6 +1,6 @@
 import { getPromise, postPromise } from "../../api/apiService";
 import { apiEndPoints } from "../../api/endPoints";
-import { localCache } from "../../api/services/localCahce";
+import { localCache } from "../../components/localCache";
 import { SidePanel } from "../../panels/sidePanelConfig";
 import { dateInitialize, toggleLoaderHideShow } from "../common-helper";
 import { createSectionField } from "../field-render-helper";
