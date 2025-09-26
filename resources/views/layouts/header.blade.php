@@ -48,7 +48,7 @@
                 <li><a class="dropdown-item" href="#"><ion-icon name="person-outline"></ion-icon>Profile</a></li>
                 <li><a class="dropdown-item" href="/settings"> <ion-icon name="settings-outline"></ion-icon> Settings</a></li>
                 <hr>
-                <li><a class="dropdown-item" href="#"><ion-icon name="exit-outline"></ion-icon>Logout</a></li>
+                <li><a class="dropdown-item" onclick="window.location.href = '{{route('logout')}}'"><ion-icon name="exit-outline"></ion-icon>Logout</a></li>
             </ul>
         </div>
 
