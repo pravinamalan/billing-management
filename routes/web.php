@@ -27,6 +27,9 @@ Route::get('login', function () {
 Route::post('authenticate', [AuthenticateController::class, 'authenticate'])->name('authenticate');
 Route::get('/forgot-password', [AuthenticateController::class, 'forgotPassword'])->name('forgot.password.get');
 Route::post('/forget-password', [AuthenticateController::class, 'submitForgotPasswordForm'])->name('forgot.password.post');
+Route::get('/reset-password', [AuthenticateController::class, 'resetPassword'])->name('reset.password');
+Route::post('/reset-password', [AuthenticateController::class, 'updatePassword'])->name('update.password');
+
 
 
 Route::group(['middleware' => 'auth'], function () {

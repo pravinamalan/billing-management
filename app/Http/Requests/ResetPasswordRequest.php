@@ -6,15 +6,15 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AuthenticateRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    // public function authorize(): bool
-    // {
-    //     return false;
-    // }
+    public function authorize(): bool
+    {
+        return false;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,8 +24,9 @@ class AuthenticateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', Rule::exists('users', User::COL_EMAIL)],
-            'password' => ['required', 'string', 'min:8']
+            'email' => ['required', 'email', Rule::in('users', User::COL_EMAIL)],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'token' => ['required', 'string']
         ];
     }
 }
