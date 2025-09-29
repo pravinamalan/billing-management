@@ -10,6 +10,7 @@ use App\Services\AuthenticateService;
 use App\Services\MailService;
 use App\Services\PasswordService;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -59,33 +60,42 @@ class AuthenticateController extends Controller
             'email' => ['required', 'email', Rule::exists('users', User::COL_EMAIL)]
         ]);
 
-        // create password reset token
-        $email = $request->email;
-        $token = $this->passwordService->generateToken();
+        try {
+            DB::beginTransaction();
 
-        // insert token in password reset tokens table
-        DB::table('password_reset_tokens')->updateOrInsert(
-            ['email' => $request->email],
-            [
-                'email'      => $email,
-                'token'      => $token,
-                'expires_at' => $this->passwordService->tokenExpire(5),
-                'created_at' => Carbon::now(),
-            ]
-        );
+            // create password reset token
+            $email = $request->email;
+            $token = $this->passwordService->generateToken();
 
-        // password reset link generation
-        $resetURL = url('/reset-password?token=' . $token);
+            // insert token in password reset tokens table
+            DB::table('password_reset_tokens')->updateOrInsert(
+                ['email' => $request->email],
+                [
+                    'email'      => $email,
+                    'token'      => $token,
+                    'expires_at' => $this->passwordService->tokenExpire(5),
+                    'created_at' => Carbon::now(),
+                ]
+            );
 
-        // send password reset link to user email
-        $sendMail = (new MailService())->sendMail(
-            $email,
-            'Reset Password Notification',
-            'emails.password-reset',
-            ['resetLink' => $resetURL]
-        );
+            // password reset link generation
+            $resetURL = url('/reset-password?token=' . $token);
 
-        return back()->with('success', 'We have e-mailed your password reset link!');
+            // send password reset link to user email
+            $sendMail = (new MailService())->sendMail(
+                $email,
+                'Reset Password Notification',
+                'emails.password-reset',
+                ['resetLink' => $resetURL]
+            );
+
+            DB::commit();
+            return back()->with('success', 'We have e-mailed your password reset link!');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return back()->with('error', 'Something went wrong, while forgot the password!');
+        }
     }
 
     /**
@@ -104,21 +114,30 @@ class AuthenticateController extends Controller
     /**
      * Handle an incoming new password request
      */
-    public function updatePassword (ResetPasswordRequest $request)
+    public function updatePassword(ResetPasswordRequest $request)
     {
         $requestValue = $request->validated();
 
-        $resetPassword = $this->authenticateService->resetPassword(
-            $requestValue['email'],
-            $requestValue['token'],
-            $requestValue['password']
-        );
+        try {
+            DB::beginTransaction();
+            $resetPassword = $this->authenticateService->resetPassword(
+                $requestValue['email'],
+                $requestValue['token'],
+                $requestValue['password']
+            );
 
-        if(isset($resetPassword['status']) && $resetPassword['status'] == 'error') {
-            return back()->with('error', $resetPassword['message']);
+            if (isset($resetPassword['status']) && $resetPassword['status'] == 'error') {
+                DB::rollBack();
+                return back()->with('error', $resetPassword['message']);
+            }
+            DB::commit();
+
+            return redirect()->route('login')->with('success', 'Your password has been changed!');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return back()->with('error', 'Something went wrong, while updating the password!');
         }
-
-        return redirect()->route('login')->with('success', 'Your password has been changed!');
     }
 
     /**
