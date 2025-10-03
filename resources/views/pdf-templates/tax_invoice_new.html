@@ -27,7 +27,6 @@
 
         * {
             box-sizing: border-box;
-            box-sizing: border-box;
         }
 
         .invoice-container {
@@ -93,21 +92,21 @@
             border-bottom: 2px solid #000;
         }
 
-        .item-table {
+        .item-table, .bank-details {
             width: 100%;
             border-collapse: collapse;
-            margin: 10px 0;
             border: 2px solid;
         }
 
         .item-table th,
-        .item-table td {
+        .item-table td, .bank-details th,
+        .bank-details td{
             border: 1px solid #000;
             padding: 8px;
             text-align: left;
         }
 
-        .item-table th {
+        .item-table th .bank-details th{
             background-color: #f0f0f0;
         }
 
@@ -121,7 +120,6 @@
 
         .bank-table {
             width: 100%;
-            border-collapse: collapse;
         }
 
         .bank-table td {
@@ -150,17 +148,9 @@
         }
 
         .signature-table {
-            width: 100%;
             position: absolute;
             bottom: 30mm;
-            left: 0;
-        }
-
-        .signature-line {
-            border-bottom: 1px solid #000;
-            width: 200px;
-            margin: 0 auto;
-            padding-top: 5px;
+            width: 100%;
         }
 
         @media print {
@@ -195,16 +185,20 @@
 
             <!-- Client and Bill Info Section -->
             <tr>
-                <td class="client-section">
-                    <table width="100%">
+                <td class="client-section" style="padding: 0px;">
+                    <table width="100%" style="margin: 0px;">
                         <tr>
-                            <td width="65%" valign="top">
+                            <td width="65%" valign="top" style="margin: 0px; padding: 10px;">
                                 <div class="client-info">To:</div>
-                                <div class="client-info">Mr GRI Jewellers (India) Private Ltd</div>
-                                <div class="client-address">136, Usman Road, T.Nagar, Chennai 6000017,</div>
+                                <div class="" style="margin-top: 10px;">Mr <span
+                                        style="text-decoration: underline;"><strong>GRI Jewellers (India) Private
+                                            Ltd</strong></span></div>
+                                <div class="client-address" style="text-decoration: underline;">136, Usman Road,
+                                    T.Nagar, Chennai 6000017,</div>
                                 <div class="client-address">Part's GST No 33AAACR3582R1ZW</div>
                             </td>
-                            <td width="35%" valign="top" align="right">
+                            <td width="35%" valign="top"
+                                style="text-align: left; border-left: 1px solid #000; padding: 10px;">
                                 <div class="bill-info">BILL No. 3</div>
                                 <div class="bill-info">Date : 20.06.2025</div>
                             </td>
@@ -215,8 +209,8 @@
 
             <!-- Item Table -->
             <tr>
-                <td style="margin: 0; padding: 0%;">
-                    <table class="item-table" style="margin: 0;">
+                <td style="padding: 0;">
+                    <table class="item-table">
                         <thead>
                             <tr>
                                 <th style="width: 10%;">S.No</th>
@@ -234,6 +228,7 @@
                                         mobilization, Diesel
                                         Driver and bata Site location – SECI – 150MW – Solar Plant
                                     </strong>
+                                    <p class="sac-code">SAC Code : 995433</p>
                                 </td>
                                 <td>45.5</td>
                                 <td>5615</td>
@@ -244,37 +239,32 @@
                 </td>
             </tr>
 
-            <!-- SAC Code -->
-            <tr>
-                <td class="sac-code">SAC Code : 995433</td>
-            </tr>
-
             <!-- Bank and Tax Details -->
             <tr>
-                <td>
-                    <table width="100%">
+                <td style=" padding: 0px !important;">
+                    <table class="bank-details" width="100%">
                         <tr>
                             <td width="60%" valign="top">
-                                <table class="bank-table">
+                                <table class="bank-table" style="font-weight: bold;">
                                     <tr>
-                                        <td>Bank : ICICI BANK</td>
+                                        <td style="border: none;">Bank : ICICI BANK</td>
                                     </tr>
                                     <tr>
-                                        <td>Branch : Pathamadai</td>
+                                        <td style="border: none;">Branch : Pathamadai</td>
                                     </tr>
                                     <tr>
-                                        <td>A/c. No : 610805020252</td>
+                                        <td style="border: none;">A/c. No : 610805020252</td>
                                     </tr>
                                     <tr>
-                                        <td>IFSC Code : ICIC0006108</td>
+                                        <td style="border: none;">IFSC Code : ICIC0006108</td>
                                     </tr>
                                     <tr>
-                                        <td>Bank Holder: Nachiyar Earth Movers</td>
+                                        <td style="border: none;">Bank Holder: Nachiyar Earth Movers</td>
                                     </tr>
                                 </table>
                             </td>
-                            <td width="40%" valign="top">
-                                <table class="tax-table">
+                            <td width="40%" valign="top" style="border-left: 1px solid #000; padding: 0;">
+                                <table class="tax-table" style="margin: 0; padding: 0; border: 1px solid #000;">
                                     <tr>
                                         <td>TOTAL</td>
                                         <td class="amount-column">2,55,482</td>
@@ -300,7 +290,11 @@
 
             <!-- Amount in Words -->
             <tr>
-                <td class="amount-in-words">Three Lakhs One Thousand Four hundred and sixty Eight Rupees Only</td>
+                <table width="100%" style="border: 2px solid black; text-align: center; padding: 10px;">
+                    <tr>
+                        <td class="amount-in-words">Three Lakhs One Thousand Four hundred and sixty Eight Rupees Only</td>
+                    </tr>
+                </table>
             </tr>
         </table>
 
@@ -309,9 +303,8 @@
             <tr>
                 <td align="right" style="padding-right: 50px;">
                     <div>FOR NACHIYAR EARTH MOVERS</div>
+                    <div>BOREWELL & CRANE SERVICE</div>
                     <div style="height: 40px;"></div>
-                    <div class="signature-line"
-                        style="width: 200px; border-top: 1px solid #000; margin-left: auto; margin-right: 0;"></div>
                     <div>Authorised Signature</div>
                 </td>
             </tr>
