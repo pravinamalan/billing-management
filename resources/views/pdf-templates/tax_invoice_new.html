@@ -1,0 +1,315 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Nachiyar Earth Movers</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #000;
+            background-color: #fff;
+            width: 100%;
+            height: 100%;
+            /* A4 height */
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .invoice-container {
+            position: absolute;
+            top: 20mm;
+            left: 20mm;
+            right: 20mm;
+            bottom: 20mm;
+            box-sizing: border-box;
+        }
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .header-cell {
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+            text-align: center;
+        }
+
+        .gstin {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+
+        .company-name {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .company-subtitle {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .company-details {
+            font-size: 14px;
+        }
+
+        .client-info {
+            font-weight: bold;
+        }
+
+        .client-address {
+            font-size: 14px;
+        }
+
+        .contact-info {
+            font-size: 14px;
+        }
+
+        .bill-info {
+            font-weight: bold;
+        }
+
+        .client-section {
+            padding: 10px 0;
+            border-bottom: 2px solid #000;
+        }
+
+        .item-table, .bank-details {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid;
+        }
+
+        .item-table th,
+        .item-table td, .bank-details th,
+        .bank-details td{
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .item-table th .bank-details th{
+            background-color: #f0f0f0;
+        }
+
+        .amount-column {
+            text-align: right;
+        }
+
+        .sac-code {
+            font-weight: bold;
+        }
+
+        .bank-table {
+            width: 100%;
+        }
+
+        .bank-table td {
+            padding: 2px 0;
+            font-size: 14px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tax-table td {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .grand-total {
+            font-weight: bold;
+        }
+
+        .amount-in-words {
+            font-style: italic;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+
+        .signature-table {
+            position: absolute;
+            bottom: 30mm;
+            width: 100%;
+        }
+
+        @media print {
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-container" style="border: 2px solid black;">
+        <table class="main-table">
+            <!-- Header Section -->
+            <tr>
+                <td class="header-cell" style="padding: 10px;">
+                    <table width="100%">
+                        <tr>
+                            <td class="gstin" align="left">GSTIN : 33BUZPK9680A12S</td>
+                            <td class="gstin" align="center">Tax Invoice</td>
+                            <td class="contact-info" align="right">Cell : 9965861037</td>
+                        </tr>
+                    </table>
+                    <div style="margin-top: 10px;">
+                        <div class="company-name">NACHIYAR EARTH MOVERS</div>
+                        <div class="company-subtitle">BOREWELL & CRANE SERVICE</div>
+                        <div class="company-details">No.56M, Ambai Main Road, Bharathi Nagar, Veeravanallur 627426</div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Client and Bill Info Section -->
+            <tr>
+                <td class="client-section" style="padding: 0px;">
+                    <table width="100%" style="margin: 0px;">
+                        <tr>
+                            <td width="65%" valign="top" style="margin: 0px; padding: 10px;">
+                                <div class="client-info">To:</div>
+                                <div class="" style="margin-top: 10px;">Mr <span
+                                        style="text-decoration: underline;"><strong>GRI Jewellers (India) Private
+                                            Ltd</strong></span></div>
+                                <div class="client-address" style="text-decoration: underline;">136, Usman Road,
+                                    T.Nagar, Chennai 6000017,</div>
+                                <div class="client-address">Part's GST No 33AAACR3582R1ZW</div>
+                            </td>
+                            <td width="35%" valign="top"
+                                style="text-align: left; border-left: 1px solid #000; padding: 10px;">
+                                <div class="bill-info">BILL No. 3</div>
+                                <div class="bill-info">Date : 20.06.2025</div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Item Table -->
+            <tr>
+                <td style="padding: 0;">
+                    <table class="item-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">S.No</th>
+                                <th style="width: 50%;">JCB RENTAL DETAILS</th>
+                                <th style="width: 10%;">DAY</th>
+                                <th style="width: 10%;">RATE</th>
+                                <th style="width: 20%;">AMOUNT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>
+                                    <strong>Rental for Mini JCB Excavator (Hitachi) It includes, Equipment and team
+                                        mobilization, Diesel
+                                        Driver and bata Site location – SECI – 150MW – Solar Plant
+                                    </strong>
+                                    <p class="sac-code">SAC Code : 995433</p>
+                                </td>
+                                <td>45.5</td>
+                                <td>5615</td>
+                                <td class="amount-column">2,55,482</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Bank and Tax Details -->
+            <tr>
+                <td style=" padding: 0px !important;">
+                    <table class="bank-details" width="100%">
+                        <tr>
+                            <td width="60%" valign="top">
+                                <table class="bank-table" style="font-weight: bold;">
+                                    <tr>
+                                        <td style="border: none;">Bank : ICICI BANK</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">Branch : Pathamadai</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">A/c. No : 610805020252</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">IFSC Code : ICIC0006108</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">Bank Holder: Nachiyar Earth Movers</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="40%" valign="top" style="border-left: 1px solid #000; padding: 0;">
+                                <table class="tax-table" style="margin: 0; padding: 0; border: 1px solid #000;">
+                                    <tr>
+                                        <td>TOTAL</td>
+                                        <td class="amount-column">2,55,482</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CGST 9 %</td>
+                                        <td class="amount-column">22,993</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SGST 9 %</td>
+                                        <td class="amount-column">22,993</td>
+                                    </tr>
+                                    <tr class="grand-total">
+                                        <td>Grand Total</td>
+                                        <td class="amount-column">3,01,468</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Amount in Words -->
+            <tr>
+                <table width="100%" style="border: 2px solid black; text-align: center; padding: 10px;">
+                    <tr>
+                        <td class="amount-in-words">Three Lakhs One Thousand Four hundred and sixty Eight Rupees Only</td>
+                    </tr>
+                </table>
+            </tr>
+        </table>
+
+        <!-- Signature Section -->
+        <table class="signature-table">
+            <tr>
+                <td align="right" style="padding-right: 50px;">
+                    <div>FOR NACHIYAR EARTH MOVERS</div>
+                    <div>BOREWELL & CRANE SERVICE</div>
+                    <div style="height: 40px;"></div>
+                    <div>Authorised Signature</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

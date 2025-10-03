@@ -127,7 +127,7 @@ return [
                     "field_slug" => "OPERATOR_ASSIGNED",
                     "field_label" => "Driver / Operator Assigned",
                     "is_enabled" => true,
-                    "field_type" => "inputText",
+                    "field_type" => "select",
                     "field_data_type" => "string",
                     "field_properties" => json_encode([
                         "field_database_name" => "operator_assigned",
@@ -135,6 +135,10 @@ return [
                         "field_name" => "operator_assigned",
                         "placeholder" => [
                             "label" => "Enter Driver/Operator Name"
+                        ],
+                        "options" => [
+                            "predefined" => "Yes",
+                            "values" => []
                         ],
                         "custom_class" => [
                             "filter-count-element"

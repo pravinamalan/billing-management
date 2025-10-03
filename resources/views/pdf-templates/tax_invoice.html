@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Invoice - Nachiyar Earth Movers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */ /* Removed to allow content to start at the top */
+            min-height: 100vh;
+        }
+
+        .invoice-container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .invoice-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 15px ;
+            text-align: center;
+        }
+
+        .company-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .company-subtitle {
+            font-size: 18px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .invoice-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .gstin-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .invoice-body {
+            padding: 15px 30px;
+        }
+
+        .details-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .bill-to, .invoice-info {
+            width: 48%;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2a5298;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #2a5298;
+        }
+
+        .client-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .client-address {
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .gst-number {
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .bill-info {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .bill-date {
+            font-size: 18px;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .items-table th {
+            background-color: #2a5298;
+            color: white;
+            text-align: left;
+            padding: 8px 15px;
+            font-weight: 600;
+        }
+
+        .items-table td {
+            padding: 8px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .items-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .item-description {
+            line-height: 1.5;
+        }
+
+        .sac-code {
+            font-weight: 600;
+            margin-top: 5px;
+            color: #2a5298;
+        }
+
+        .amount {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .totals-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .bank-details, .tax-details {
+            width: 48%;
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .bank-title, .tax-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2a5298;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .bank-info, .tax-info {
+            line-height: 1.6;
+        }
+
+        .tax-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .grand-total {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .amount-in-words {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #f0f5ff;
+            border-radius: 6px;
+            font-style: italic;
+            text-align: center;
+            font-size: 16px;
+            border-left: 4px solid #2a5298;
+        }
+
+        .signature-section {
+            margin-top: 25px;
+            text-align: right;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .signature-line {
+            margin-top: 40px;
+            border-top: 1px solid #2a5298;
+            width: 200px;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .signature-text {
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .invoice-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <div class="company-name">NACHIYAR EARTH MOVERS</div>
+            <div class="company-subtitle">BOREWELL & CRANE SERVICE</div>
+            <div class="invoice-title">TAX INVOICE</div>
+            <div class="gstin-container">
+                <div>GSTIN: 33BUZPK9680A12S</div>
+                <div>Cell: 9965861037</div>
+            </div>
+        </div>
+
+        <div class="invoice-body">
+            <div class="details-section">
+                <div class="bill-to">
+                    <div class="section-title">BILL TO</div>
+                    <div class="client-name">GRI Jewellers (India) Private Ltd</div>
+                    <div class="client-address">136, Usman Road, T.Nagar, Chennai 6000017</div>
+                    <div class="gst-number">GST No: 33AAACR3562R1ZW</div>
+                </div>
+
+                <div class="invoice-info">
+                    <div class="section-title">INVOICE DETAILS</div>
+                    <div class="bill-info">BILL No: 3</div>
+                    <div class="bill-date">Date: 20.06.2025</div>
+                </div>
+            </div>
+
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th style="width: 8%">S.No</th>
+                        <th style="width: 54%">JCB RENTAL DETAILS</th>
+                        <th style="width: 10%">DAY</th>
+                        <th style="width: 14%">RATE</th>
+                        <th style="width: 14%">AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td>
+                            <div class="item-description">
+                                Rental for Mini JCB Excavator (Hitachi) It includes, Equipment and team mobilization, Diesel Driver and bata Site location – SECI – 150MW – Solar Plant
+                            </div>
+                            <div class="sac-code">SAC Code: 995433</div>
+                        </td>
+                        <td>45.5</td>
+                        <td>5,615</td>
+                        <td class="amount">2,55,482</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="totals-section">
+                <div class="bank-details">
+                    <div class="bank-title">BANK DETAILS</div>
+                    <div class="bank-info">
+                        <div><strong>Bank:</strong> ICICI BANK</div>
+                        <div><strong>Branch:</strong> Pathamadai</div>
+                        <div><strong>A/c No:</strong> 610805020252</div>
+                        <div><strong>IFSC Code:</strong> ICIC0006108</div>
+                        <div><strong>Account Holder:</strong> Nachiyar Earth Movers</div>
+                    </div>
+                </div>
+
+                <div class="tax-details">
+                    <div class="tax-title">TAX SUMMARY</div>
+                    <div class="tax-info">
+                        <div class="tax-row">
+                            <div>TOTAL:</div>
+                            <div>₹2,55,482</div>
+                        </div>
+                        <div class="tax-row">
+                            <div>CGST 9%:</div>
+                            <div>₹22,993</div>
+                        </div>
+                        <div class="tax-row">
+                            <div>SGST 9%:</div>
+                            <div>₹22,993</div>
+                        </div>
+                        <div class="tax-row grand-total">
+                            <div>GRAND TOTAL:</div>
+                            <div>₹3,01,468</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="amount-in-words">
+                <strong>Three Lakhs One Thousand Four Hundred and Sixty Eight Rupees Only</strong>
+            </div>
+
+            <div class="signature-section">
+                <div>FOR NACHIYAR EARTH MOVERS</div>
+                <div>BOREWELL & CRANE SERVICE</div>
+                <div class="signature-line"></div>
+                <div class="signature-text">Authorised Signature</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

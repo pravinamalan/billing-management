@@ -1,69 +1,21 @@
-{{-- <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid d-flex align-items-center justify-content-space-between">
-        <a class="navbar-brand" href="#">Billing & Management</a>
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                BM
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#income">Income</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#expense">Enpense</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#employees">Employees</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#orders">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#report">Report</a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</nav> --}}
-
 <div class="header d-flex align-items-center justify-content-between fixed-top w-full">
-    <div class="titile">
-        <h4>Billing & Mangement</h4>
+    <div class="titile d-flex align-items-center gap-2">
+        <svg width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="icomoon-ignore">
+                </g>
+                <path d="M29.532 25.76l-5.655-5.655 0.754-0.754-0.754-0.754-2.261 2.261-3.771-3.77 4.53-4.532c0.603 0.215 1.234 0.324 1.882 0.324 1.493 0 2.897-0.582 3.954-1.637 1.63-1.631 2.092-4.054 1.178-6.174l-0.311-0.722-2.43 2.43-1.956 0.027 0.026-1.866 2.477-2.477-0.72-0.312c-0.706-0.306-1.457-0.461-2.229-0.461-1.494 0-2.897 0.582-3.952 1.637-1.546 1.545-2.043 3.802-1.311 5.84l-4.529 4.529-6.409-6.408 0.754-0.754-4.145-4.146-2.264 2.261 4.147 4.147 0.753-0.754 6.409 6.408-4.529 4.529c-0.605-0.217-1.239-0.326-1.888-0.326-1.493 0-2.897 0.582-3.953 1.637-1.633 1.632-2.095 4.059-1.176 6.181l0.312 0.72 2.477-2.477 1.865-0.025-0.027 1.956-2.43 2.43 0.722 0.311c0.704 0.303 1.452 0.458 2.221 0.458 1.494 0 2.897-0.581 3.952-1.636 1.544-1.544 2.041-3.799 1.314-5.833l4.532-4.532 3.771 3.769-2.263 2.263 0.754 0.754 0.754-0.754 5.654 5.654c0.503 0.504 1.174 0.781 1.885 0.781s1.381-0.277 1.885-0.781c1.039-1.039 1.039-2.73-0-3.769zM3.899 4.648l0.754-0.753 2.638 2.638-0.754 0.754-2.639-2.639zM11.448 22.456c0.739 1.716 0.364 3.679-0.955 4.999-0.854 0.854-1.989 1.324-3.198 1.324-0.347 0-0.689-0.039-1.021-0.116l1.569-1.569 0.047-3.485-3.394 0.046-1.619 1.619c-0.356-1.51 0.081-3.103 1.208-4.229 0.854-0.854 1.99-1.325 3.199-1.325 0.626 0 1.233 0.125 1.806 0.373l0.333 0.144 10.819-10.819-0.144-0.333c-0.744-1.719-0.37-3.682 0.952-5.004 0.854-0.854 1.99-1.325 3.198-1.325 0.35 0 0.695 0.040 1.030 0.117l-1.618 1.618-0.047 3.394 3.485-0.047 1.57-1.57c0.352 1.507-0.086 3.097-1.209 4.221-0.855 0.854-1.991 1.325-3.2 1.325-0.624 0-1.23-0.125-1.801-0.371l-0.332-0.143-10.821 10.823 0.143 0.332zM28.779 28.775c-0.302 0.302-0.704 0.469-1.131 0.469s-0.829-0.167-1.131-0.469l-5.654-5.654 2.262-2.262 5.655 5.655c0.624 0.624 0.624 1.638 0.001 2.261z" fill="#525b69">
+
+                </path>
+        </svg>
+        <h4>Earth Glide</h4>
     </div>
-    <div class="profile d-flex align-items-center gap-2 ">
-        <div class="tabluator-input-search-wrapper d-none d-lg-flex" id="ORDER_SEARCH">
-            <span class="search-icon">
-                <img src="https://inflowcare.s3.amazonaws.com/static/icons/search.svg" width="18" height="18">
-            </span>
-            <input type="text" class="form-control search" id="search" placeholder="Search" autocomplete="off" style="background: #f1f3f4 !important;">
-            <span class="focus-border"></span>
-            <img class="search-clear visibility-hide" src="https://inflowcare.s3.amazonaws.com/static/icons/clear.svg" width="12" height="12" style="opacity: .5;">
-        </div>
+    <div class="profile d-flex align-items-center gap-3 ">
         <div class="dropdown">
             <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M10.146 3.248a2 2 0 0 1 3.708 0A7.003 7.003 0 0 1 19 10v4.697l1.832 2.748A1 1 0 0 1 20 19h-4.535a3.501 3.501 0 0 1-6.93 0H4a1 1 0 0 1-.832-1.555L5 14.697V10c0-3.224 2.18-5.94 5.146-6.752zM10.586 19a1.5 1.5 0 0 0 2.829 0h-2.83zM12 5a5 5 0 0 0-5 5v5a1 1 0 0 1-.168.555L5.869 17H18.13l-.963-1.445A1 1 0 0 1 17 15v-5a5 5 0 0 0-5-5z"
-                        fill="#f6f6f6" />
+                        fill="#525b69" />
                 </svg>
             </button>
             <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-start notification-card">
@@ -86,19 +38,26 @@
         <div class="dropdown">
             <button class="btn  dropdown-toggle profile-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <svg fill="#f6f6f6" width="24" height="24" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M6.03531778,18.739764 C7.62329979,20.146176 9.71193925,21 12,21 C14.2880608,21 16.3767002,20.146176 17.9646822,18.739764 C17.6719994,17.687349 15.5693823,17 12,17 C8.43061774,17 6.32800065,17.687349 6.03531778,18.739764 Z M4.60050358,17.1246475 C5.72595131,15.638064 8.37060189,15 12,15 C15.6293981,15 18.2740487,15.638064 19.3994964,17.1246475 C20.4086179,15.6703183 21,13.9042215 21,12 C21,7.02943725 16.9705627,3 12,3 C7.02943725,3 3,7.02943725 3,12 C3,13.9042215 3.59138213,15.6703183 4.60050358,17.1246475 Z M12,23 C5.92486775,23 1,18.0751322 1,12 C1,5.92486775 5.92486775,1 12,1 C18.0751322,1 23,5.92486775 23,12 C23,18.0751322 18.0751322,23 12,23 Z M8,10 C8,7.75575936 9.57909957,6 12,6 C14.4141948,6 16,7.92157821 16,10.2 C16,13.479614 14.2180861,15 12,15 C9.76086382,15 8,13.4273743 8,10 Z M10,10 C10,12.2692568 10.8182108,13 12,13 C13.1777063,13 14,12.2983927 14,10.2 C14,8.95041736 13.2156568,8 12,8 C10.7337387,8 10,8.81582479 10,10 Z" />
-                </svg>
+               <svg class="svg-position position--bottom position--mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1016_460)"><path d="M4 4C3.73478 4 3.48043 4.10536 3.29289 4.29289C3.10536 4.48043 3 4.73478 3 5C3 5.26522 3.10536 5.51957 3.29289 5.70711C3.48043 5.89464 3.73478 6 4 6H20C20.2652 6 20.5196 5.89464 20.7071 5.70711C20.8946 5.51957 21 5.26522 21 5C21 4.73478 20.8946 4.48043 20.7071 4.29289C20.5196 4.10536 20.2652 4 20 4H4ZM3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929C3.48043 11.1054 3.73478 11 4 11H7C7.26522 11 7.51957 11.1054 7.70711 11.2929C7.89464 11.4804 8 11.7348 8 12C8 12.2652 7.89464 12.5196 7.70711 12.7071C7.51957 12.8946 7.26522 13 7 13H4C3.73478 13 3.48043 12.8946 3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12ZM3 19C3 18.7348 3.10536 18.4804 3.29289 18.2929C3.48043 18.1054 3.73478 18 4 18H8C8.26522 18 8.51957 18.1054 8.70711 18.2929C8.89464 18.4804 9 18.7348 9 19C9 19.2652 8.89464 19.5196 8.70711 19.7071C8.51957 19.8946 8.26522 20 8 20H4C3.73478 20 3.48043 19.8946 3.29289 19.7071C3.10536 19.5196 3 19.2652 3 19ZM10 14C10.0002 13.2204 10.1827 12.4517 10.5329 11.7552C10.8831 11.0587 11.3913 10.4537 12.0169 9.98857C12.6426 9.52346 13.3683 9.21108 14.1361 9.07639C14.904 8.9417 15.6927 8.98843 16.4393 9.21285C17.1859 9.43726 17.8697 9.83315 18.436 10.3689C19.0024 10.9046 19.4356 11.5654 19.7011 12.2984C19.9666 13.0313 20.057 13.8162 19.9652 14.5904C19.8733 15.3646 19.6017 16.1065 19.172 16.757L20.707 18.293C20.8892 18.4816 20.99 18.7342 20.9877 18.9964C20.9854 19.2586 20.8802 19.5094 20.6948 19.6948C20.5094 19.8802 20.2586 19.9854 19.9964 19.9877C19.7342 19.99 19.4816 19.8892 19.293 19.707L17.757 18.172C17.0034 18.6701 16.1288 18.9548 15.2264 18.9957C14.3239 19.0366 13.4272 18.8322 12.6316 18.4043C11.836 17.9764 11.1712 17.3409 10.7078 16.5654C10.2445 15.7899 9.99986 14.9034 10 14ZM15 11C14.606 11 14.2159 11.0776 13.8519 11.2284C13.488 11.3791 13.1573 11.6001 12.8787 11.8787C12.6001 12.1573 12.3791 12.488 12.2284 12.8519C12.0776 13.2159 12 13.606 12 14C12 14.394 12.0776 14.7841 12.2284 15.1481C12.3791 15.512 12.6001 15.8427 12.8787 16.1213C13.1573 16.3999 13.488 16.6209 13.8519 16.7716C14.2159 16.9224 14.606 17 15 17C15.7956 17 16.5587 16.6839 17.1213 16.1213C17.6839 15.5587 18 14.7956 18 14C18 13.2044 17.6839 12.4413 17.1213 11.8787C16.5587 11.3161 15.7956 11 15 11Z" fill="#525b69"/></g>
+                        <defs><clipPath id="clip0_1016_460"><rect width="24" height="24" fill="#525b69"/></clipPath></defs>
+                    </svg>
             </button>
             <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-start">
-                <li><a class="dropdown-item" href="/"><ion-icon name="home-outline"></ion-icon>Home</a></li>
+                <li><a class="dropdown-item" href="/home"><ion-icon name="home-outline"></ion-icon>Home</a></li>
                 <li><a class="dropdown-item" href="#"><ion-icon name="person-outline"></ion-icon>Profile</a></li>
                 <li><a class="dropdown-item" href="/settings"> <ion-icon name="settings-outline"></ion-icon> Settings</a></li>
                 <hr>
-                <li><a class="dropdown-item" href="#"><ion-icon name="exit-outline"></ion-icon>Logout</a></li>
+                <li><a class="dropdown-item" onclick="window.location.href = '{{route('logout')}}'"><ion-icon name="exit-outline"></ion-icon>Logout</a></li>
             </ul>
+        </div>
+
+        <div class="d-none d-md-flex align-items-center gap-2 user-details">
+            <img src="{{ url('/images/user-profile.png') }}" alt="user-profile" width="30px">
+            <div class="d-flex flex-column">
+                <span class="user-name mb-1">Robert Downey</span>
+                <span class="user-desc">Adminstrator</span>
+            </div>
         </div>
     </div>
 </div>

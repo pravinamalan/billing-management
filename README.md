@@ -64,3 +64,32 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+resources/
+│── js/
+│   ├── app.js              # Main entry point (loads Bootstrap, tabs logic)
+│   ├── bootstrap.js        # Laravel's default bootstrapper
+│   ├── utils/              # Helper functions (formatting, validation, etc.)
+│   │   ├── api.js          # Axios/fetch wrappers
+│   │   ├── formatter.js    # Format money, date, etc.
+│   │   └── helpers.js
+│   ├── services/           # Business logic layer
+│   │   ├── homeService.js
+│   │   ├── dashboardService.js
+│   │   ├── transactionService.js
+│   │   ├── employeeService.js
+│   │   └── orderService.js
+│   ├── tabs/               # Each tab's JS code
+│   │   ├── home.js
+│   │   ├── dashboard.js
+│   │   ├── transaction.js
+│   │   ├── employee.js
+│   │   └── order.js
+│   ├── components/         # Reusable UI components
+│   │   ├── chart.js        # chart setup
+│   │   ├── modal.js        # reusable modal logic
+│   │   └── table.js        # reusable table logic
+│   └── config/             # App-level configs
+│       ├── constants.js    # All constant values
+│       └── endpoints.js    # API endpoints

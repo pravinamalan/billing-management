@@ -1,6 +1,6 @@
 import { getPromise, postPromise } from "../../api/apiService";
 import { apiEndPoints } from "../../api/endPoints";
-import { localCache } from "../../api/services/localCahce";
+import { localCache } from "../../components/localCache";
 import { SidePanel } from "../../panels/sidePanelConfig";
 import { dateInitialize, toggleLoaderHideShow } from "../common-helper";
 import { createSectionField } from "../field-render-helper";
@@ -91,25 +91,20 @@ export class ListSidePanel {
             this.sidePanel.showLoader();
 
             const formData = this.collectFormData();
-            let url;
 
-            if (this.mode === "ADD") {
-                url = apiEndPoints(this.module, "SAVE");
-            } else if (this.mode === "EDIT") {
-                url = apiEndPoints(this.module, "UPDATE").replace(`{%${this.module}_ID%}`, this.rowId);
-            }
+            const url = this.getApiUrl();
 
             const { status } = await postPromise(url, formData);
 
             if (status === "Success") {
-                this.sidePanel.hideLoader();
-                setTimeout(() => {
-                    this.sidePanel.closeSidePanel();
-                }, 800);
+                await this.handleSaveSuccess(response);
+
+            }else{
+                throw new Error(response.message || 'Failed to save data');
             }
         } catch (error) {
-            console.error('Error saving data:', error);
-            this.sidePanel.hideLoader();
+            await this.handleSaveError(error);
+
         }
     }
 
@@ -130,17 +125,53 @@ export class ListSidePanel {
         return params;
     }
 
+    getApiUrl() {
+        if (this.mode === "ADD") {
+            return apiEndPoints(this.module, "SAVE");
+        } else if (this.mode === "EDIT") {
+
+            return apiEndPoints(this.module, "UPDATE").replace(`{%${this.module}_ID%}`, this.rowId);
+        }
+        throw new Error("Invalid mode specified");
+    }
+
+    async handleSaveSuccess(response) {
+        this.sidePanel.hideLoader();
+
+        this.showNotification('Success', response.message || 'Data saved successfully', 'success');
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        this.sidePanel.closeSidePanel();
+        this.refreshTable();
+    }
+
+    showNotification(title, message, type) {
+        // change log to toster
+        console.log(`${title}: ${message}`, type);
+    }
+    async handleSaveError(error) {
+        console.error('Error saving data:', error);
+        this.sidePanel.hideLoader();
+        this.showNotification('Error', error.message, 'error');
+    }
+
+    refreshTable() {
+        $(`.refresh-table[data-section="${this.module}"]`).trigger("click");
+    }
     /**
      * Get fields from API or cache - USING MODULE-SPECIFIC CACHE
      */
     async getFields() {
         try {
 
+
             let fieldsData = this.cache.getItem(this.module, 'fields') || {};
 
             if (Object.keys(fieldsData).length === 0) {
                 console.log(`Fetching fresh fields for module: ${this.module}`);
-                const { status, fields } = await getPromise(this.url);
+                const url = this.getFieldApiUrl();
+                const { status, fields } = await getPromise(url);
 
                 if (status === "Success") {
                     fieldsData = fields || {};
@@ -163,6 +194,18 @@ export class ListSidePanel {
             this.sidePanel.hideLoader();
             this.sidePanel.setContent(`<div class="alert alert-danger">Error loading form: ${error.message}</div>`);
         }
+    }
+
+    getFieldApiUrl() {
+        if (this.mode === "ADD") {
+
+            return apiEndPoints(this.module, "FIELDS");
+
+        } else if (this.mode === "EDIT") {
+            console.log(this.mode,this.module,this.rowId);
+            return apiEndPoints(this.module, "EDIT").replace(`{%${this.module}_ID%}`, this.rowId);
+        }
+        throw new Error("Invalid mode specified");
     }
 
     /**

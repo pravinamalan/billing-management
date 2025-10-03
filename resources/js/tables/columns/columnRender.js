@@ -74,8 +74,8 @@ export class ColumnRenderer {
         if (actions.includes('edit')) {
             actionHTML += `
                 <span class="icon-box edit-action cursor-pointer"
-                    data-id="${id}
-                    title="Edit" data-section=${moduleName}>
+                    data-id=${id}
+                    data-action="Edit" data-section=${moduleName}>
                     ${editIcon({ width: 18, height: 18 })}
                 </span>`;
         }
@@ -83,8 +83,8 @@ export class ColumnRenderer {
         if (actions.includes('delete')) {
             actionHTML += `
                 <span class="icon-box delete-action cursor-pointer"
-                    data-id="${id}
-                    title="Delete" data-section=${moduleName}>
+                    data-id=${id}
+                    data-action="Delete" data-section=${moduleName}>
                     ${deleteIcon({ width: 18, height: 18 })}
                 </span>`;
         }
@@ -92,8 +92,8 @@ export class ColumnRenderer {
         if (actions.includes('download')) {
             actionHTML += `
                 <span class="icon-box download-action cursor-pointer"
-                    data-id="${id}
-                    title="Download" data-section=${moduleName}>
+                    data-id=${id}
+                    data-action="Download" data-section=${moduleName}>
                     ${downloadIcon({ width: 18, height: 18 })}
                 </span>`;
         }
